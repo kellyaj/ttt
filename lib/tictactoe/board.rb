@@ -29,8 +29,8 @@ class Board
     rows
   end
   
-  def place_human_move(player_move, player_mark)
-    @positions[player_move - 1] = player_mark
+  def place_move(move, mark)
+    @positions[move - 1] = mark
   end
 
 end

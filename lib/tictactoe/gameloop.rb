@@ -29,6 +29,6 @@ class GameLoop
   end
 
   def place_human_move(player_move)
-    @board.place_human_move(player_move, get_player_mark)
+    @board.place_move(player_move, get_player_mark)
   end
 end
