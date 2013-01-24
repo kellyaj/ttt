@@ -44,6 +44,7 @@ describe GameLoop do
       end
 
      it "should place the computers move onto the board" do
+       g.place_move
        g.get_board_positions.should include("O")
      end
 

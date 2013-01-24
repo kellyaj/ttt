@@ -30,6 +30,7 @@ class GameLoop
 
   def place_move
     @board.place_move(get_player_move, get_player_mark)
+    @board.place_move(@computer.computer_choose_move, get_computer_mark)
   end
 
   def place_computer_move
