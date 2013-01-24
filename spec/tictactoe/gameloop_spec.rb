@@ -39,8 +39,13 @@ describe GameLoop do
 
       it "should place the players move onto the board" do
         player_move = g.get_player_move
-        g.place_human_move(player_move).should be_true
+        g.place_move
+        g.get_board_positions.should include("X")
       end
+
+     it "should place the computers move onto the board" do
+       g.get_board_positions.should include("O")
+     end
 
      xit "should switch players" do
       end

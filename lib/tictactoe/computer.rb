@@ -10,4 +10,8 @@ class Computer
     @mark
   end
 
+  def computer_choose_move
+    rand 1..9
+  end
+
 end

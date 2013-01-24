@@ -28,7 +28,10 @@ class GameLoop
     rand 1..9
   end
 
-  def place_human_move(player_move)
-    @board.place_move(player_move, get_player_mark)
+  def place_move
+    @board.place_move(get_player_move, get_player_mark)
+  end
+
+  def place_computer_move
   end
 end
