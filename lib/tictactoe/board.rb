@@ -28,5 +28,9 @@ class Board
     rows << [@positions[2], @positions[4], @positions[6]]
     rows
   end
+  
+  def place_human_move(player_move, player_mark)
+    @positions[player_move - 1] = player_mark
+  end
 
 end

@@ -32,7 +32,18 @@ describe GameLoop do
   end
 
   describe "#game loop" do
-    xit "should get a player move after prompt" do
+    describe "#moves" do
+      it "should get a player move after prompt" do
+        g.get_player_move.should_not be_nil
+      end
+
+      it "should place the players move onto the board" do
+        player_move = g.get_player_move
+        g.place_human_move(player_move).should be_true
+      end
+
+     xit "should switch players" do
+      end
     end
   end
 

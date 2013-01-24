@@ -23,4 +23,12 @@ class GameLoop
   def get_computer_mark
     @computer.mark
   end
+
+  def get_player_move
+    rand 1..9
+  end
+
+  def place_human_move(player_move)
+    @board.place_human_move(player_move, get_player_mark)
+  end
 end

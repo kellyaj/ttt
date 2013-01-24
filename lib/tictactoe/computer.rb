@@ -6,4 +6,8 @@ class Computer
     @mark = mark
   end
 
+  def computer_player
+    @mark
+  end
+
 end

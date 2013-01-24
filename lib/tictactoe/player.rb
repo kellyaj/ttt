@@ -6,7 +6,7 @@ class Player
     @mark = mark
   end
 
-  def player1
+  def human_player
     @mark
   end
 
