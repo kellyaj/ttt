@@ -28,9 +28,18 @@ class Board
     rows << [@positions[2], @positions[4], @positions[6]]
     rows
   end
-  
+
   def place_move(move, mark)
     @positions[move - 1] = mark
+  end
+
+  def print_board
+    board = horizontal_rows
+    puts "    " + board[0].join("   |   ")
+    puts "   " + "-------------------"
+    puts "    " + board[1].join("   |   ")
+    puts "   " + "-------------------"
+    puts "    " + board[2].join("   |   ")
   end
 
 end

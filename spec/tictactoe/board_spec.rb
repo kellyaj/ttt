@@ -41,11 +41,18 @@ describe Board do
 
   describe "#moves" do
     it "should be able to place a human move" do
-      @board = Board.new [1,2,3,4,5,6,7,8,9]
+      board = Board.new [1,2,3,4,5,6,7,8,9]
       player_move = 5
       player_mark = "X"
-      @board.place_move(player_move, player_mark)
-      @board.positions[4].should == "X"
+      board.place_move(player_move, player_mark)
+      board.positions[4].should == "X"
+    end
+  end
+  
+  describe "#printing" do
+   xit "should be able to print the board" do
+      board = Board.new [1,2,3,4,5,6,7,8,9]
+      board.print_board.should be_nil
     end
   end
 

@@ -48,8 +48,6 @@ describe GameLoop do
        g.get_board_positions.should include("O")
      end
 
-     xit "should switch players" do
-      end
     end
   end
 
