@@ -11,7 +11,7 @@ class Computer
   end
 
   def computer_choose_move
-    rand 1..9
+    5
   end
 
 end

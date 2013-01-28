@@ -1,3 +1,4 @@
+require 'pry'
 class GameLoop
 
   def initialize(output)
@@ -25,7 +26,12 @@ class GameLoop
   end
 
   def get_player_move
-    rand 1..9
+    player_move = 1
+    if @board.place_is_taken?(player_move) == true
+      @output.puts 'That space is occupied.'
+    else
+      player_move
+    end
   end
 
   def place_move

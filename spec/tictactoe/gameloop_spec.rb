@@ -21,7 +21,7 @@ describe GameLoop do
 
   describe "#game start" do
     it "should have a welcome message" do
-      output.should_receieve(:puts).with('Tic-Tac-Toe Time!')
+      output.should_receive(:puts).with('Tic-Tac-Toe Time!')
       g.start
     end
 
@@ -37,17 +37,25 @@ describe GameLoop do
         g.get_player_move.should_not be_nil
       end
 
+      xit "should puts a rejection message if the place is taken" do
+        g.place_move
+        g.get_board_positions.should include("X")
+        g.place_move
+        output.should_receive(:puts).with('That space is occupied.')
+      end
+
       it "should place the players move onto the board" do
         g.place_move
         g.get_board_positions.should include("X")
       end
 
-     it "should place the computers move onto the board" do
-       g.place_move
-       g.get_board_positions.should include("O")
-     end
+      it "should place the computers move onto the board" do
+        g.place_move
+        g.get_board_positions.should include("O")
+      end
 
     end
+
   end
 
 end
