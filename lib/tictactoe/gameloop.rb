@@ -33,6 +33,4 @@ class GameLoop
     @board.place_move(@computer.computer_choose_move, get_computer_mark)
   end
 
-  def place_computer_move
-  end
 end
