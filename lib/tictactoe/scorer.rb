@@ -7,21 +7,7 @@ class Scorer
 
   def is_won?(board)
     winner = false
-    board.horizontal_rows.each do |row|
-      if is_won_row?(row) == true
-        winner = true
-      end
-    end
-    board.vertical_rows.each do |row|
-      if is_won_row?(row) == true
-        winner = true
-      end
-    end
-    board.diagonal_rows.each do |row|
-      if is_won_row?(row) == true
-        winner = true
-      end
-    end
+    winner = true if  board.horizontal_rows.collect {|row| is_won_row?(row)}.include?(true) || board.vertical_rows.collect {|row| is_won_row?(row)}.include?(true) || board.diagonal_rows.collect {|row| is_won_row?(row)}.include?(true)
     winner
   end
 
