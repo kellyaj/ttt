@@ -1,3 +1,4 @@
+require 'pry'
 class Scorer
   def is_won_row?(row)
     values = row.uniq
@@ -5,7 +6,23 @@ class Scorer
   end
 
   def is_won?(board)
-    false
+    winner = false
+    board.horizontal_rows.each do |row|
+      if is_won_row?(row) == true
+        winner = true
+      end
+    end
+    board.vertical_rows.each do |row|
+      if is_won_row?(row) == true
+        winner = true
+      end
+    end
+    board.diagonal_rows.each do |row|
+      if is_won_row?(row) == true
+        winner = true
+      end
+    end
+    winner
   end
 
   def is_stalemate?(board)

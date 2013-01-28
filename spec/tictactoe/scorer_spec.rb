@@ -14,9 +14,24 @@ describe Scorer do
   end
 
   describe "#is_won?" do
-    it "can determine that a new board is not won" do
+   it "can determine that a new board is not won" do
       board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9]
       Scorer.new.is_won?(board).should == false
+    end
+
+    it "can determine that a horizontal win has occured" do
+      board = Board.new ["X", "X", "X", 4, 5, 6, 7, 8, 9]
+      Scorer.new.is_won?(board).should == true
+    end
+
+    it "can determine that a column win has occured" do
+      board = Board.new ["X", 2, 3, "X", 5, 6, "X", 8, 9]
+      Scorer.new.is_won?(board).should == true
+    end
+
+    it "can determine that a diagonal win has occured" do
+      board = Board.new ["X", 2, 3, 4, "X", 6, 7, 8, "X"]
+      Scorer.new.is_won?(board).should == true
     end
   end
 
