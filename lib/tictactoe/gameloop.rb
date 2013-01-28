@@ -6,6 +6,7 @@ class GameLoop
     @player = Player.new("X")
     @computer = Computer.new("O")
     @board = Board.new([1,2,3,4,5,6,7,8,9])
+    @scorer = Scorer.new
   end
 
   def start
@@ -37,6 +38,10 @@ class GameLoop
   def place_move
     @board.place_move(get_player_move, get_player_mark)
     @board.place_move(@computer.computer_choose_move, get_computer_mark)
+  end
+
+  def is_over?
+    @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
   end
 
 end

@@ -32,6 +32,11 @@ describe GameLoop do
   end
 
   describe "#game loop" do
+    it "should know that the game is not over at the beginning" do
+      g.is_over?.should == false
+    end
+
+
     describe "#moves" do
       it "should get a player move after prompt" do
         g.get_player_move.should_not be_nil
@@ -53,7 +58,6 @@ describe GameLoop do
         g.place_move
         g.get_board_positions.should include("O")
       end
-
     end
 
   end
