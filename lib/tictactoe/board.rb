@@ -33,6 +33,10 @@ class Board
     @positions[move - 1] = mark
   end
 
+  def place_is_taken?(place)
+    @positions[place - 1] == ("X" || "O")
+  end
+
   def print_board
     board = horizontal_rows
     puts "    " + board[0].join("   |   ")

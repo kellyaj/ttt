@@ -47,6 +47,16 @@ describe Board do
       board.place_move(player_move, player_mark)
       board.positions[4].should == "X"
     end
+
+    it "should be able to check if a spot is not taken" do
+      board = Board.new [1,2,3,4,5,6,7,8,9]
+      board.place_is_taken?(1).should == false
+    end
+
+    it "should be able to check if a spot is occupied" do
+      board = Board.new ["X",2,3,4,5,6,7,8,9]
+      board.place_is_taken?(1).should == true
+    end
   end
   
   describe "#printing" do

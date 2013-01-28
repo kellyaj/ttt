@@ -16,7 +16,7 @@ describe Scorer do
   describe "#is_won?" do
    it "can determine that a new board is not won" do
       board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      Scorer.new.is_won?(board).should == false
+      Scorer.new.is_won?(board).should  be_nil
     end
 
     it "can determine that a horizontal win has occured" do
