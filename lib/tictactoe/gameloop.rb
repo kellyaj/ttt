@@ -1,4 +1,3 @@
-require 'pry'
 class GameLoop
 
   def initialize(output)
@@ -7,6 +6,7 @@ class GameLoop
     @computer = Computer.new("O")
     @board = Board.new([1,2,3,4,5,6,7,8,9], output)
     @scorer = Scorer.new
+    @printer = BoardPrinter.new(output)
   end
 
   def start

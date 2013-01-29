@@ -38,13 +38,4 @@ class Board
     @positions[place - 1] == ("X" || "O")
   end
 
-  def print_board
-    board = horizontal_rows
-    @output.puts "    " + board[0].join("   |   ")
-    @output.puts "   " + "-------------------"
-    @output.puts "    " + board[1].join("   |   ")
-    @output.puts "   " + "-------------------"
-    @output.puts "    " + board[2].join("   |   ")
-  end
-
 end

@@ -61,16 +61,5 @@ describe Board do
     end
   end
 
-  describe "#printing" do
-   it "should be able to print the board" do
-      board = Board.new([1,2,3,4,5,6,7,8,9],output)
-      output.should_receive(:puts).with("    " + [1,2,3].join("   |   "))
-      output.should_receive(:puts).with("   " + "-------------------")
-      output.should_receive(:puts).with("    " + [4,5,6].join("   |   "))
-      output.should_receive(:puts).with("   " + "-------------------")
-      output.should_receive(:puts).with("    " + [7,8,9].join("   |   "))
-      board.print_board
-    end
-  end
 
 end
