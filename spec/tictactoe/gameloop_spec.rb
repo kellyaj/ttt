@@ -42,11 +42,11 @@ describe GameLoop do
         g.get_player_move.should_not be_nil
       end
 
-      xit "should puts a rejection message if the place is taken" do
+      it "should puts a rejection message if the place is taken" do
+        output.should_receive(:puts).with('That space is occupied.')
         g.place_move
         g.get_board_positions.should include("X")
         g.place_move
-        output.should_receive(:puts).with('That space is occupied.')
       end
 
       it "should place the players move onto the board" do

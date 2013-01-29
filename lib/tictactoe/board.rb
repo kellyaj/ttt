@@ -2,8 +2,9 @@ class Board
 
   attr_reader :positions
 
-  def initialize(board)
+  def initialize(board, output)
     @positions = board
+    @output = output
   end
 
   def horizontal_rows
@@ -39,11 +40,11 @@ class Board
 
   def print_board
     board = horizontal_rows
-    puts "    " + board[0].join("   |   ")
-    puts "   " + "-------------------"
-    puts "    " + board[1].join("   |   ")
-    puts "   " + "-------------------"
-    puts "    " + board[2].join("   |   ")
+    @output.puts "    " + board[0].join("   |   ")
+    @output.puts "   " + "-------------------"
+    @output.puts "    " + board[1].join("   |   ")
+    @output.puts "   " + "-------------------"
+    @output.puts "    " + board[2].join("   |   ")
   end
 
 end

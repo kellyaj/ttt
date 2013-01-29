@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe Board do
 
+  let (:output) {output = double('output').as_null_object}
+
   describe "#initialize" do
     it "should initialize with a board" do
       spaces = [1,2,3,4,5,6,7,8,9]
-      board = Board.new spaces
+      board = Board.new(spaces, output)
       board.positions.should == spaces
     end
   end
 
   describe "#rows" do
     before(:each) do
-      @board = Board.new [1,2,3,4,5,6,7,8,9]
+      @board = Board.new([1,2,3,4,5,6,7,8,9], output)
     end
 
     it "should give me the horizontal rows on the board" do
@@ -41,7 +43,7 @@ describe Board do
 
   describe "#moves" do
     it "should be able to place a human move" do
-      board = Board.new [1,2,3,4,5,6,7,8,9]
+      board = Board.new([1,2,3,4,5,6,7,8,9], output)
       player_move = 5
       player_mark = "X"
       board.place_move(player_move, player_mark)
@@ -49,20 +51,25 @@ describe Board do
     end
 
     it "should be able to check if a spot is not taken" do
-      board = Board.new [1,2,3,4,5,6,7,8,9]
+      board = Board.new([1,2,3,4,5,6,7,8,9], output)
       board.place_is_taken?(1).should == false
     end
 
     it "should be able to check if a spot is occupied" do
-      board = Board.new ["X",2,3,4,5,6,7,8,9]
+      board = Board.new(["X",2,3,4,5,6,7,8,9], output)
       board.place_is_taken?(1).should == true
     end
   end
-  
+
   describe "#printing" do
-   xit "should be able to print the board" do
-      board = Board.new [1,2,3,4,5,6,7,8,9]
-      board.print_board.should be_nil
+   it "should be able to print the board" do
+      board = Board.new([1,2,3,4,5,6,7,8,9],output)
+      output.should_receive(:puts).with("    " + [1,2,3].join("   |   "))
+      output.should_receive(:puts).with("   " + "-------------------")
+      output.should_receive(:puts).with("    " + [4,5,6].join("   |   "))
+      output.should_receive(:puts).with("   " + "-------------------")
+      output.should_receive(:puts).with("    " + [7,8,9].join("   |   "))
+      board.print_board
     end
   end
 

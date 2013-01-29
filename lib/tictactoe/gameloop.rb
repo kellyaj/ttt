@@ -5,7 +5,7 @@ class GameLoop
     @output = output
     @player = Player.new("X")
     @computer = Computer.new("O")
-    @board = Board.new([1,2,3,4,5,6,7,8,9])
+    @board = Board.new([1,2,3,4,5,6,7,8,9], output)
     @scorer = Scorer.new
   end
 
@@ -28,11 +28,7 @@ class GameLoop
 
   def get_player_move
     player_move = 1
-    if @board.place_is_taken?(player_move) == true
-      @output.puts 'That space is occupied.'
-    else
-      player_move
-    end
+    @board.place_is_taken?(player_move) ? @output.puts("That space is occupied.") : player_move
   end
 
   def place_move
