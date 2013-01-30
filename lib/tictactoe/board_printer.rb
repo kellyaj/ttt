@@ -15,9 +15,6 @@ class BoardPrinter
 
   def horizontal_rows(board)
     rows = []
-    rows << board.slice(0, 3)
-    rows << board.slice(3, 3)
-    rows << board.slice(6, 3)
-    rows
+    rows << board.slice(0, 3) << board.slice(3, 3) << board.slice(6, 3)
   end
 end
