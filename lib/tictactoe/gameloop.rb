@@ -8,7 +8,7 @@ class GameLoop
   end
 
 
-  def loop
+  def main
     @game.start
     until game.is_over?
       @game.place_move
