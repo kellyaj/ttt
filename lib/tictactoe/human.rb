@@ -1,6 +1,6 @@
 class Human
 
-	def choose_move 
-		1
+	def choose_move
+		gets.chomp.to_i
 	end
 end

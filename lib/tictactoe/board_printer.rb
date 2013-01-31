@@ -1,3 +1,4 @@
+require 'pry'
 class BoardPrinter
 
   def initialize(output)
@@ -11,6 +12,7 @@ class BoardPrinter
     @output.puts "    " + board[1].join("   |   ")
     @output.puts "   " + "-------------------"
     @output.puts "    " + board[2].join("   |   ")
+    @output.puts "\n\n"
   end
 
   def horizontal_rows(board)

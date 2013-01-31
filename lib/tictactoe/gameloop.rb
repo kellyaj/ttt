@@ -1,22 +1,21 @@
+require 'pry'
 class GameLoop
 
   attr_reader :game
 
   def initialize(output)
     @output = output
-    @game = Game.new(@output)
-    self.main 
+    self.main(Game.new(@output))
   end
 
-  def main
-    @game.start
-    until game.is_over?
-      @game.print_board
-      @game.place_move
-      @game.cycle_players
+  def main(game)
+    game.start
+    while !game.is_over?
+      game.print_board
+      game.place_move
+      game.cycle_players
     end
-    #initialize if @game.play_again?
+    self.main(Game.new(@output)) if game.play_again?
   end
-
 
 end

@@ -9,9 +9,7 @@ class Scorer
   end
 
   def is_stalemate?(board)
-    current_board = board.positions
-    current_board.collect! {|y| y.to_i}
-    if current_board.inject(:+) == 0
+    if board.positions.map(&:to_i).inject(:+) == 0
       true
     else
       false

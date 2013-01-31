@@ -1,3 +1,4 @@
+require 'pry'
 class Game
 
   attr_reader :board, :current_player
@@ -49,10 +50,6 @@ class Game
 
   def play_again?
     @output.puts 'Would you like to play again? Yes or no'
-    if "yes"
-      Game.new
-    else
-    end
   end
 
   def cycle_players
