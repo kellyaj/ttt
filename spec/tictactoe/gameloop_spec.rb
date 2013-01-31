@@ -1,65 +1,25 @@
 require 'spec_helper'
 
 describe GameLoop do
-
   let (:output) {output = double('output').as_null_object}
-  let (:g) {GameLoop.new(output)}
+  let (:game_loop) {GameLoop.new(output)}
 
-  describe "#initialize" do
-    it "should initialize a player with mark X" do
-      g.get_player_mark.should == "X"
-    end
-
-    it "should initialize a computer with mark O" do
-      g.get_computer_mark.should == "O"
-    end
-
-    it "should initialize with a new board" do
-      g.get_board_positions.should == [1,2,3,4,5,6,7,8,9]
-    end
+  it "should initialize with a new game" do
+    game_loop.game.should be_true
   end
 
-  describe "#game start" do
-    it "should have a welcome message" do
-      output.should_receive(:puts).with('Tic-Tac-Toe Time!')
-      g.start
-    end
-
-    it "should prompt the user to move" do
-      output.should_receive(:puts).with('Choose a space to occupy.')
-      g.start
-    end
+  it "should be able to start the game" do
+    output.should_receive(:puts).with('Tic-Tac-Toe Time!')
+    output.should_receive(:puts).with('Choose a space to occupy.')
+    game_loop.start_game
   end
 
-  describe "#game loop" do
-    it "should know that the game is not over at the beginning" do
-      g.is_over?.should == false
-    end
+  it "should be able to get a player move" do
+    game_loop.make_player_move.should be_true
+  end
 
-
-    describe "#moves" do
-      it "should get a player move after prompt" do
-        g.get_player_move.should_not be_nil
-      end
-
-      it "should puts a rejection message if the place is taken" do
-        output.should_receive(:puts).with('That space is occupied.')
-        g.place_move
-        g.get_board_positions.should include("X")
-        g.place_move
-      end
-
-      it "should place the players move onto the board" do
-        g.place_move
-        g.get_board_positions.should include("X")
-      end
-
-      it "should place the computers move onto the board" do
-        g.place_move
-        g.get_board_positions.should include("O")
-      end
-    end
-
+  it "should know if the game is over" do
+    game_loop.is_over?.should be_false
   end
 
 end
