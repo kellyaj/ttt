@@ -10,10 +10,6 @@ describe Game do
       g.get_player_mark.should == "X"
     end
 
-    it "should initialize a computer with mark O" do
-      g.get_computer_mark.should == "O"
-    end
-
     it "should initialize with a new board" do
       g.get_board_positions.should == [1,2,3,4,5,6,7,8,9]
     end
@@ -63,9 +59,14 @@ describe Game do
         g.get_board_positions.should include("X")
       end
 
-      it "should place the computers move onto the board" do
+      xit "should place the computers move onto the board" do
+      	#cycle players then place it to test
         g.place_move
         g.get_board_positions.should include("O")
+      end
+
+      xit "should know who the current player is" do
+      	g.current_player.should_not be_nil
       end
     end
 
