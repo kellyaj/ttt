@@ -1,11 +1,4 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib',__FILE__)
 require 'tictactoe'
-
-game = GameLoop.new
-
-game.start
-
-while game !is_over?
-  game.get_player_move
-end
+GameLoop.new(STDOUT)

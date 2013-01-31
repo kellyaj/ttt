@@ -13,6 +13,10 @@ class Game
     @players_array = [@player1, @player2]
   end
 
+  def print_board
+    @printer.print_board(@board)
+  end
+
   def start
     @output.puts 'Tic-Tac-Toe Time!'
     @output.puts 'Choose a space to occupy.'
@@ -45,6 +49,10 @@ class Game
 
   def play_again?
     @output.puts 'Would you like to play again? Yes or no'
+    if "yes"
+      Game.new
+    else
+    end
   end
 
   def cycle_players

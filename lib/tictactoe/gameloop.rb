@@ -5,15 +5,18 @@ class GameLoop
   def initialize(output)
     @output = output
     @game = Game.new(@output)
+    self.main 
   end
 
   def main
     @game.start
     until game.is_over?
+      @game.print_board
       @game.place_move
       @game.cycle_players
     end
-    @game.play_again?
+    #initialize if @game.play_again?
   end
+
 
 end
