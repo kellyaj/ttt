@@ -7,7 +7,6 @@ class GameLoop
     @game = Game.new(@output)
   end
 
-
   def main
     @game.start
     until game.is_over?
@@ -16,21 +15,5 @@ class GameLoop
     end
     @game.play_again?
   end
-
-  # def start_game
-  #   @game.start
-  # end
-
-  # def make_player_move
-  #   @game.place_move
-  # end
-
-  # def is_over?
-  #   @game.is_over?
-  # end
-
-  # def cycle_players
-  #   @game.cycle_players
-  # end
 
 end

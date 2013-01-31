@@ -10,6 +10,7 @@ class Game
     @player1 = Player.new("X", Human.new)
     @player2 = Player.new("O", Computer.new)
     @current_player = @player1
+    @players_array = [@player1, @player2]
   end
 
   def start
@@ -47,11 +48,7 @@ class Game
   end
 
   def cycle_players
-    if @current_player == @player1
-      @current_player = @player2
-    else 
-      @current_player = @player1
-    end
+    @current_player = @players_array.reverse!.first
   end
 
 end
