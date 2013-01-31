@@ -64,8 +64,8 @@ describe Game do
         g.get_board_positions.should include("X")
       end
 
-      xit "should place the computers move onto the board" do
-      	# cycle players then place it to test
+      it "should place the computers move onto the board" do
+        g.cycle_players
         g.place_move
         g.get_board_positions.should include("O")
       end
