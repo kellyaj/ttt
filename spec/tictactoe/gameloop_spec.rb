@@ -8,9 +8,9 @@ describe GameLoop do
     game_loop.game.should be_true
   end
 
-  it "should be able to start the loop" do
-    game_loop.main
-  end
+  # it "should be able to start the loop" do
+  #   game_loop.main
+  # end
 
   # it "should be able to start the game" do
   #   output.should_receive(:puts).with('Tic-Tac-Toe Time!')
