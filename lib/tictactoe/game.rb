@@ -1,15 +1,15 @@
 class Game
 
-  attr_reader :board
+  attr_reader :board, :current_player
 
   def initialize(output)
     @output = output
     @board = Board.new([1,2,3,4,5,6,7,8,9], output)
     @scorer = Scorer.new
     @printer = BoardPrinter.new(output)
-    player1 = Player.new("X", Human.new)
-    player2 = Player.new("O", Computer.new)
-    @current_player = player1
+    @player1 = Player.new("X", Human.new)
+    @player2 = Player.new("O", Computer.new)
+    @current_player = @player1
   end
 
   def start
@@ -44,6 +44,14 @@ class Game
 
   def play_again?
     @output.puts 'Would you like to play again? Yes or no'
+  end
+
+  def cycle_players
+    if @current_player == @player1
+      @current_player = @player2
+    else 
+      @current_player = @player1
+    end
   end
 
 end

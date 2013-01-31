@@ -22,4 +22,8 @@ describe GameLoop do
     game_loop.is_over?.should be_false
   end
 
+  it "should be able to cycle players" do
+    game_loop.cycle_players.should be_true
+  end
+
 end

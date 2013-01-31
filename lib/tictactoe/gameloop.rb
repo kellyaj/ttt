@@ -19,4 +19,8 @@ class GameLoop
     @game.is_over?
   end
 
+  def cycle_players
+    @game.cycle_players
+  end
+
 end

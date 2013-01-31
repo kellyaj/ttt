@@ -41,6 +41,11 @@ describe Game do
      g.play_again?
     end
 
+    it "should be able to cycle players" do
+      g.cycle_players
+      g.current_player.mark.should == "O"
+    end
+
 
     describe "#moves" do
       it "should get a player move after prompt" do
@@ -60,13 +65,13 @@ describe Game do
       end
 
       xit "should place the computers move onto the board" do
-      	#cycle players then place it to test
+      	# cycle players then place it to test
         g.place_move
         g.get_board_positions.should include("O")
       end
 
-      xit "should know who the current player is" do
-      	g.current_player.should_not be_nil
+      it "should know who the current player is at the beginning of the game" do
+      	g.current_player.mark.should == "X"
       end
     end
 
