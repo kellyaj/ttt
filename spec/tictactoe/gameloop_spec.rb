@@ -4,7 +4,7 @@ describe GameLoop do
   let (:output) {output = double('output').as_null_object}
   let (:game_loop) {GameLoop.new(output)}
 
-  it "should initialize with a new game" do
+  xit "should initialize with a new game" do
     game_loop.game.should be_true
   end
 

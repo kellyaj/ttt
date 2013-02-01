@@ -15,7 +15,7 @@ class Game
   end
 
   def print_board
-    @printer.print_board(@board)
+    @printer.print_board(@board.positions) # now just passing in positions
   end
 
   def start
