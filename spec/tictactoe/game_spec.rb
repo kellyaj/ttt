@@ -18,12 +18,12 @@ describe Game do
   describe "#game start" do
     it "should have a welcome message" do
       output.should_receive(:puts).with('Tic-Tac-Toe Time!')
-      g.start
+      g.welcome_message
     end
 
     it "should prompt the user to move" do
       output.should_receive(:puts).with('Choose a space to occupy.')
-      g.start
+      g.welcome_message
     end
   end
 

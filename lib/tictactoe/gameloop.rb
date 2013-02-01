@@ -9,7 +9,7 @@ class GameLoop
   end
 
   def main(game)
-    game.start
+    game.welcome_message
     while !game.is_over?
       game.print_board
       game.place_move

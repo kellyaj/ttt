@@ -18,7 +18,7 @@ class Game
     @printer.print_board(@board.positions) # now just passing in positions
   end
 
-  def start
+  def welcome_message
     @output.puts 'Tic-Tac-Toe Time!'
     @output.puts 'Choose a space to occupy.'
   end
