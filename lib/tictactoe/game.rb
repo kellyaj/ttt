@@ -37,7 +37,6 @@ class Game
 
   def get_player_move
     player_move = @current_player.get_player_move(@board.available_spots)
-    binding.pry
     @board.place_is_taken?(player_move) ? @output.puts("That space is occupied.") : player_move
   end
 

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'stringio'
 
 describe Game do
 
@@ -57,6 +58,8 @@ describe Game do
 
     describe "#moves" do
       it "should get a player move after prompt" do
+        #g.current_player.stub(:choose_move).and_return(1)
+        g.current_player = human
         g.get_player_move.should_not be_nil
       end
 
