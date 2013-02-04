@@ -22,11 +22,6 @@ describe Game do
       output.should_receive(:puts).with('Tic-Tac-Toe Time!')
       g.welcome_message
     end
-
-    xit "should prompt the user to move" do
-      output.should_receive(:puts).with('Choose a space to occupy.')
-      g.welcome_message
-    end
   end
 
   describe "#game loop" do
@@ -62,12 +57,6 @@ describe Game do
       it "should get a player move after prompt" do
         g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
         g.get_player_move.should_not be_nil
-      end
-
-      xit "should display an array of available moves to a human" do
-        g = Game.new(output)
-        g.get_player_move
-        output.should_receive(:puts).with("Available spots: [1,2,3,4,5,6,7,8,9]")
       end
 
       xit "should puts a rejection message if the place is taken" do

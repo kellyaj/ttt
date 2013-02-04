@@ -23,5 +23,11 @@ describe "Human" do
 			human = Human.new(output, StringIO.new("4"))
 			human.choose_move(available_spots).should == 4
 		end
+
+		it "should display an array of available moves to the player" do
+			output.should_receive(:puts).with('Available moves: [2, 3, 4, 6, 7, 8, 9]')
+			human = Human.new(output, StringIO.new("4"))
+			human.choose_move(available_spots).should == 4
+		end
 	end
 end
