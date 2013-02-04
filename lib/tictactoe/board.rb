@@ -37,4 +37,14 @@ class Board
     @positions[place - 1] == ("X" || "O")
   end
 
+  def available_spots
+    untaken_positions = []
+    @positions.each do |position|
+      unless position == ("X" || "O")
+        untaken_positions << position
+      end
+    end
+    untaken_positions
+  end
+
 end

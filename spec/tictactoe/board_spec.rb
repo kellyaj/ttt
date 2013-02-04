@@ -59,6 +59,11 @@ describe Board do
       board = Board.new(["X",2,3,4,5,6,7,8,9], output)
       board.place_is_taken?(1).should == true
     end
+
+    it "should know which spots are available" do
+      board = Board.new(["X",2,3,4,5,6,7,8,9], output)
+      board.available_spots.should == [2,3,4,5,6,7,8,9]
+    end
   end
 
 
