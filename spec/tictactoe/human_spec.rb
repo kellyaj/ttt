@@ -17,5 +17,11 @@ describe "Human" do
 			human = Human.new(output, StringIO.new("2"))
 			human.choose_move(available_spots).should == 2
 		end
+
+		it "should prompt a human user to choose a move" do
+			output.should_receive(:puts).with('Choose a space to occupy.')
+			human = Human.new(output, StringIO.new("4"))
+			human.choose_move(available_spots).should == 4
+		end
 	end
 end

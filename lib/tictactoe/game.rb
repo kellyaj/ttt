@@ -20,7 +20,6 @@ class Game
 
   def welcome_message
     @output.puts 'Tic-Tac-Toe Time!'
-    @output.puts 'Choose a space to occupy.'
   end
 
   def get_player_mark

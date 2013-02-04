@@ -23,7 +23,7 @@ describe Game do
       g.welcome_message
     end
 
-    it "should prompt the user to move" do
+    xit "should prompt the user to move" do
       output.should_receive(:puts).with('Choose a space to occupy.')
       g.welcome_message
     end
