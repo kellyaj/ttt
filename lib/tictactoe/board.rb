@@ -44,7 +44,7 @@ class Board
         untaken_positions << position
       end
     end
-    untaken_positions
+    untaken_positions.delete_if {|x| x.class == String}
   end
 
 end
