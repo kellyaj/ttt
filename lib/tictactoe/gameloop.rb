@@ -15,6 +15,8 @@ class GameLoop
       game.place_move
       game.cycle_players
     end
+    # put end_message here
+    # "Whoever won the game" if is_winner?
     self.main(Game.new(@output)) if game.play_again?
   end
 

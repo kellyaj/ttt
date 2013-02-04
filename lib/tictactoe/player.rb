@@ -8,7 +8,7 @@ class Player
     @player_type = player_type
   end
 
-  def get_player_move
+  def get_player_move # also pass in empty positions
   	@player_type.choose_move
   end
 

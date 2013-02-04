@@ -3,9 +3,9 @@ class Game
 
   attr_reader :board, :current_player
 
-  def initialize(output)
+  def initialize(output, board = [1,2,3,4,5,6,7,8,9])
     @output = output
-    @board = Board.new([1,2,3,4,5,6,7,8,9], output)
+    @board = Board.new(board, output)
     @scorer = Scorer.new
     @printer = BoardPrinter.new(output)
     @player1 = Player.new("X", Human.new)
@@ -36,7 +36,7 @@ class Game
   end
 
   def get_player_move
-    player_move = @current_player.get_player_move
+    player_move = @current_player.get_player_move # pass in empty positions
     @board.place_is_taken?(player_move) ? @output.puts("That space is occupied.") : player_move
   end
 
@@ -45,6 +45,9 @@ class Game
   end
 
   def is_over?
+    if @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
+      winner_message
+    end
     @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
   end
 
@@ -54,6 +57,10 @@ class Game
 
   def cycle_players
     @current_player = @players_array.reverse!.first
+  end
+
+  def winner_message
+    @output.puts("A player has won the game")
   end
 
 end

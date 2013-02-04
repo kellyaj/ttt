@@ -21,7 +21,7 @@ describe Player do
 
   	it "should be able to get a move from a computer player type" do
   		p = Player.new("O", Computer.new)
-  		p.get_player_move.should == 5
+  		p.get_player_move.should_be_a Integer
   	end
   end
 end

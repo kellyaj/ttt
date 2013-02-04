@@ -7,7 +7,7 @@ describe GameLoop do
   xit "should initialize with a new game" do
     game_loop.game.should be_true
   end
-
+  
   # it "should be able to start the loop" do
   #   game_loop.main
   # end
