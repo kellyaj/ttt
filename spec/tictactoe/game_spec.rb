@@ -59,14 +59,6 @@ describe Game do
         g.get_player_move.should_not be_nil
       end
 
-      xit "should puts a rejection message if the place is taken" do
-        g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
-        output.should_receive(:puts).with('That space is occupied.')
-        g.place_move
-        g.get_board_positions.should include("X")
-        g.place_move
-      end
-
       it "should place the players move onto the board" do
         g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
         g.place_move

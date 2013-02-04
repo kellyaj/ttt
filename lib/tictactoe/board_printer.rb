@@ -16,7 +16,6 @@ class BoardPrinter
   end
 
   def horizontal_rows(board)
-    #board = board.positions # board_printer_spec doesn't like this
     rows = []
     rows << board.slice(0, 3) << board.slice(3, 3) << board.slice(6, 3)
   end

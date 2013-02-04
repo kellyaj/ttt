@@ -9,8 +9,8 @@ class Human
 	def choose_move(available_spots)
 		move_message
 		display_available_moves(available_spots)
-		user_input = @input.gets.chomp.to_i
-		user_input if valid_move?(user_input, available_spots)
+		user_input = @input.gets.to_i
+		valid_move?(user_input, available_spots) ? user_input : invalid_message(available_spots)
 	end
 
 	def valid_move?(user_input, available_spots)
@@ -23,6 +23,11 @@ class Human
 
 	def display_available_moves(available_spots)
 		@output.puts 'Available moves: ' + available_spots.to_s
+	end
+
+	def invalid_message(available_spots)
+		@output.puts 'That is not a valid move. Try again.'
+		choose_move(available_spots)
 	end
 
 end
