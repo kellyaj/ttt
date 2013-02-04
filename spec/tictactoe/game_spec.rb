@@ -4,9 +4,9 @@ require 'stringio'
 describe Game do
 
   let (:output) {output = double('output').as_null_object}
-  let (:g) {Game.new(output)}
 
   describe "#initialize"  do
+    let (:g) {Game.new(output)}
     it "should initialize a player with mark X" do
       g.get_player_mark.should == "X"
     end
@@ -17,6 +17,7 @@ describe Game do
   end
 
   describe "#game start" do
+    let (:g) {Game.new(output)}
     it "should have a welcome message" do
       output.should_receive(:puts).with('Tic-Tac-Toe Time!')
       g.welcome_message
@@ -29,6 +30,7 @@ describe Game do
   end
 
   describe "#game loop" do
+    let (:g) {Game.new(output)}
     it "should know that the game is not over at the beginning" do
       g.is_over?.should == false
     end
@@ -58,17 +60,18 @@ describe Game do
 
     describe "#moves" do
       it "should get a player move after prompt" do
-        #g.current_player.stub(:choose_move).and_return(1)
-        g.current_player = human
+        g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
         g.get_player_move.should_not be_nil
       end
 
       xit "should display an array of available moves to a human" do
+        g = Game.new(output)
         g.get_player_move
         output.should_receive(:puts).with("Available spots: [1,2,3,4,5,6,7,8,9]")
       end
 
-      it "should puts a rejection message if the place is taken" do
+      xit "should puts a rejection message if the place is taken" do
+        g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
         output.should_receive(:puts).with('That space is occupied.')
         g.place_move
         g.get_board_positions.should include("X")
@@ -76,17 +79,20 @@ describe Game do
       end
 
       it "should place the players move onto the board" do
+        g = Game.new(output, [1,2,3,4,5,6,7,8,9], StringIO.new("1"))
         g.place_move
         g.get_board_positions.should include("X")
       end
 
       it "should place the computers move onto the board" do
+        g = Game.new(output)
         g.cycle_players
         g.place_move
         g.get_board_positions.should include("O")
       end
 
       it "should know who the current player is at the beginning of the game" do
+        g = Game.new(output)
       	g.current_player.mark.should == "X"
       end
     end

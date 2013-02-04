@@ -3,12 +3,12 @@ class Game
 
   attr_reader :board, :current_player
 
-  def initialize(output, board = [1,2,3,4,5,6,7,8,9])
+  def initialize(output, board = [1,2,3,4,5,6,7,8,9], input = $stdin)
     @output = output
     @board = Board.new(board, output)
     @scorer = Scorer.new
     @printer = BoardPrinter.new(output)
-    @player1 = Player.new("X", Human.new)
+    @player1 = Player.new("X", Human.new(input))
     @player2 = Player.new("O", Computer.new)
     @current_player = @player1
     @players_array = [@player1, @player2]
