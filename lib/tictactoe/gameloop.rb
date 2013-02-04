@@ -3,9 +3,11 @@ class GameLoop
 
   attr_reader :game
 
-  def initialize(output)
+  def initialize(output, input = $stdin)
     @output = output
-    self.main(Game.new(@output))
+    @input = input
+    @game = Game.new(@output, [1,2,3,4,5,6,7,8,9], $stdin, nil, nil)
+    self.main(@game)
   end
 
   def main(game)
@@ -16,9 +18,13 @@ class GameLoop
       break if game.is_over?
       game.cycle_players
     end
-    # put end_message here
-    # "Whoever won the game" if is_winner?
-    self.main(Game.new(@output)) if game.play_again?
+    self.main(Game.new(@output, [1,2,3,4,5,6,7,8,9], $stdin, nil, nil)) if play_again?
+  end
+
+  def play_again?
+    @output.puts 'Would you like to play again? Yes or no'
+    response = @input.gets.chomp
+    response == "yes"
   end
 
 end

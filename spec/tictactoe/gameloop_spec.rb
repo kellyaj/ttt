@@ -1,15 +1,18 @@
 require 'spec_helper'
+require 'stringio'
 
 describe GameLoop do
   let (:output) {output = double('output').as_null_object}
-  let (:game_loop) {GameLoop.new(output)}
+  #let (:game_loop) {GameLoop.new(output)}
+ 
 
-  # xit "should initialize with a new game" do
-  #   game_loop.game.should be_true
-  # end
-  
-  # it "should be able to start the loop" do
-  #   game_loop.main
-  # end
+  it "should receive a message asking to play again" do
+  	output.should_receive(:puts).with('Would you like to play again? Yes or no')
+  	GameLoop.new(output, StringIO.new("No"))
+  end
+
+  it "should play again if the response is yes" do
+  	GameLoop.new(output, StringIO.new("Yes"))
+  end
 
 end
