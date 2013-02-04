@@ -1,7 +1,7 @@
 require 'pry'
 class Human
 
-	def initialize(input = $stdin)
+	def initialize(output = $stdout, input = $stdin)
 		@input = input
 	end
 

@@ -8,7 +8,7 @@ class Game
     @board = Board.new(board, output)
     @scorer = Scorer.new
     @printer = BoardPrinter.new(output)
-    @player1 = Player.new("X", Human.new(input))
+    @player1 = Player.new("X", Human.new(output,input))
     @player2 = Player.new("O", Computer.new)
     @current_player = @player1
     @players_array = [@player1, @player2]
@@ -37,7 +37,6 @@ class Game
 
   def get_player_move
     player_move = @current_player.get_player_move(@board.available_spots)
-    @board.place_is_taken?(player_move) ? @output.puts("That space is occupied.") : player_move
   end
 
   def place_move
