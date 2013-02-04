@@ -44,6 +44,7 @@ class Game
 
   def is_over?
     if @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
+      @printer.print_board(@board.positions)
       winner_message
     end
     @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
@@ -58,7 +59,7 @@ class Game
   end
 
   def winner_message
-    @output.puts("A player has won the game")
+    @output.puts("#{@current_player.mark} has won the game")
   end
 
 end

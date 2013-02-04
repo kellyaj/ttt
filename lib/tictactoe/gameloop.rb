@@ -13,6 +13,7 @@ class GameLoop
     while !game.is_over?
       game.print_board
       game.place_move
+      break if game.is_over?
       game.cycle_players
     end
     # put end_message here
