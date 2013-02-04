@@ -60,6 +60,11 @@ describe Game do
         g.get_player_move.should_not be_nil
       end
 
+      xit "should display an array of available moves to a human" do
+        g.get_player_move
+        output.should_receive(:puts).with("Available spots: [1,2,3,4,5,6,7,8,9]")
+      end
+
       it "should puts a rejection message if the place is taken" do
         output.should_receive(:puts).with('That space is occupied.')
         g.place_move
