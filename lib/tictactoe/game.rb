@@ -13,16 +13,8 @@ class Game
   end
 
   def assign_players(player1, player2)
-    if player1.nil?
-      @player1 = Player.new("X", Computer.new)
-    else
-      @player1 = player1
-    end
-    if player2.nil?
-      @player2 = Player.new("O", Computer.new)
-    else
-      @player2 = player2
-    end
+    player1.nil? ? @player1 = Player.new("X", Computer.new) : @player1 = player1
+    player2.nil? ? @player2 = Player.new("O", Computer.new) : @player2 = player2
   end
 
   def print_board
