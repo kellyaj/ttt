@@ -9,10 +9,15 @@ describe GameLoop do
   	GameLoop.new(output, StringIO.new("No"))
   end
 
-  xit "should play again if the response is yes" do
+  # functioning but cant figure out testing. downcase doesnt work either 
+  xit "should play again if the response is yes" do 
   	first_loop = GameLoop.new(output, StringIO.new("yes"))
   	first_loop_game = first_loop.game
+  end
 
+  it "should allow a human to decide who plays" do
+  	gloop = GameLoop.new(output, StringIO.new("Human"))
+  	gloop.game.current_player.player_type.class.should == Computer
   end
 
 end
