@@ -61,10 +61,6 @@ class Game
     @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
   end
 
-  def play_again?
-    #@output.puts 'Would you like to play again? Yes or no'
-  end
-
   def cycle_players
     @current_player = @players_array.reverse!.first
   end

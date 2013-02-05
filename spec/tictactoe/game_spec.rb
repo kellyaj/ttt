@@ -28,25 +28,16 @@ describe Game do
       g.is_over?.should == false
     end
 
-   it "should prompt the player to play again at the end" do
-     g.board.positions[0] = "X"
-     g.board.positions[1] = "X"
-     g.board.positions[2] = "X"
-     g.is_over?.should == true
-     output.should_receieve(:puts).with("Would you like to play again? yes or no")
-     g.play_again?
-    end
-
     it "should be able to cycle players" do
       g.cycle_players
       g.current_player.mark.should == "O"
     end
 
-    xit "should report who won the game" do
+    xit "should report who won the game" do # passing but too much noise for it to know
+      output.should_receive(:puts).with('"X" has won the game')
       g.board.positions[0] = "X"
       g.board.positions[1] = "X"
       g.board.positions[2] = "X"
-      output.should_receive(:puts).with('"X" has won the game')
       g.is_over?.should == true
     end
 

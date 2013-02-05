@@ -6,7 +6,7 @@ class GameLoop
   def initialize(output, input = $stdin)
     @output = output
     @input = input
-    @game = Game.new(@output, [1,2,3,4,5,6,7,8,9], $stdin, nil, nil)
+    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)
     self.main(@game)
   end
 
@@ -24,6 +24,7 @@ class GameLoop
   def play_again?
     @output.puts 'Would you like to play again? Yes or no'
     response = @input.gets.chomp
+    response.downcase
     response == "yes"
   end
 
