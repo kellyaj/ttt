@@ -4,11 +4,15 @@ class Game
   attr_reader :board, :current_player
 
   def initialize(output, board = [1,2,3,4,5,6,7,8,9], input = $stdin, player1, player2)
-    @output = output
-    @input = input
+    @output, @input = output, input
     @board = Board.new(board, output)
-    @scorer = Scorer.new
-    @printer = BoardPrinter.new(output)
+    @scorer, @printer = Scorer.new, BoardPrinter.new(output)
+    assign_players(player1, player2)
+    @current_player = @player1
+    @players_array = [@player1, @player2]
+  end
+
+  def assign_players(player1, player2)
     if player1.nil?
       @player1 = Player.new("X", Computer.new)
     else
@@ -19,10 +23,6 @@ class Game
     else
       @player2 = player2
     end
-    #@player1 = Player.new("X", Human.new(output,input))
-    #@player2 = Player.new("O", Computer.new)
-    @current_player = @player1
-    @players_array = [@player1, @player2]
   end
 
   def print_board
