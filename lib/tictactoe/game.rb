@@ -18,7 +18,7 @@ class Game
   end
 
   def print_board
-    @printer.print_board(@board.positions) # now just passing in positions
+    @printer.print_board(@board.positions) 
   end
 
   def welcome_message
