@@ -39,6 +39,13 @@ describe Board do
       rows.should include([1, 5, 9])
       rows.should include([3, 5, 7])
     end
+
+    it "should get all the rows" do
+      rows = @board.get_rows
+      rows.should include([1, 2, 3])
+      rows.should include([3, 6, 9])
+      rows.should include([3, 5, 7])
+    end
   end
 
   describe "#moves" do

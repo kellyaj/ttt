@@ -25,16 +25,8 @@ class Game
     @output.puts 'Tic-Tac-Toe Time!'
   end
 
-  def get_player_mark
-    @current_player.mark
-  end
-
   def get_board_positions
     @board.positions
-  end
-
-  def get_computer_mark
-    @computer.mark
   end
 
   def get_player_move
@@ -42,7 +34,7 @@ class Game
   end
 
   def place_move
-    @board.place_move(get_player_move, get_player_mark)
+    @board.place_move(get_player_move, @current_player.mark)
   end
 
   def is_over?

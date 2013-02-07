@@ -9,10 +9,6 @@ describe Game do
   describe "#initialize"  do
   let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
 
-    it "should initialize a player with mark X" do
-      g.get_player_mark.should == "X"
-    end
-
     it "should initialize with a new board" do
       g.get_board_positions.should == [1,2,3,4,5,6,7,8,9]
     end

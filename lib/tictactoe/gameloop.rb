@@ -30,7 +30,7 @@ class GameLoop
   end
 
   def choose_player_type
-    @output.puts 'The first player is: Human or Computer?'
+    @output.puts "Type 'human' if you would like to play."
     response = @input.gets.chomp
     response.downcase
     response == "human"
