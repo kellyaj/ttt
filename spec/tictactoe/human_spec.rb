@@ -30,10 +30,9 @@ describe "Human" do
 			human.choose_move(available_spots).should == 4
 		end
 
-		# working, but test disabled because I can't figure out how to write it
-		xit "should display an error message if a move is invalid and reprompt" do
+		it "should display an error message if a move is invalid and reprompt" do
 			output.should_receive(:puts).with('That is not a valid move. Try again.')
-			human = Human.new(output, StringIO.new("5"))
+			human = Human.new(output, StringIO.new("5\n3"))
 			human.choose_move(available_spots)
 		end
 	end
