@@ -35,11 +35,11 @@ describe Game do
       g.current_player.mark.should == "O"
     end
 
-    xit "should report who won the game" do # passing but too much noise for it to know
-      output.should_receive(:puts).with('"X" has won the game')
+    it "should report who won the game" do
       g.board.positions[0] = "X"
       g.board.positions[1] = "X"
       g.board.positions[2] = "X"
+      output.should_receive(:puts).with('X has won the game')
       g.is_over?.should == true
     end
   end
