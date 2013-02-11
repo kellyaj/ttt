@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib',__FILE__)
 require 'tictactoe'
-GameLoop.new(STDOUT)
+GameLoop.new(STDOUT) #add start here

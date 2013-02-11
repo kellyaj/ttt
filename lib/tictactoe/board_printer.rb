@@ -6,12 +6,12 @@ class BoardPrinter
   end
 
   def print_board(board)
-    board = horizontal_rows(board)
-    @output.puts "    " + board[0].join("   |   ")
-    @output.puts "   " + "-------------------"
-    @output.puts "    " + board[1].join("   |   ")
-    @output.puts "   " + "-------------------"
-    @output.puts "    " + board[2].join("   |   ")
+    # check for is_last rows.last?
+    rows = horizontal_rows(board)
+    rows.each do |row|
+      @output.puts "    " + row.join("   |   ")
+      @output.puts "   " + "-------------------"
+    end
     @output.puts "\n\n"
   end
 

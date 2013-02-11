@@ -8,6 +8,7 @@ class Board
   end
 
   def get_rows
+    # use old concat code from before
     rows = []
     rows << @positions.slice(0, 3)
     rows << @positions.slice(3, 3)
@@ -49,7 +50,7 @@ class Board
 
   def place_is_taken?(place)
     @positions[place - 1] == ("X" || "O")
-  end
+  end 
 
   def available_spots
     untaken_positions = []

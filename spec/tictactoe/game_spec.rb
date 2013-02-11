@@ -10,7 +10,7 @@ describe Game do
   let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
 
     it "should initialize with a new board" do
-      g.get_board_positions.should == [1,2,3,4,5,6,7,8,9]
+      g.board.positions.should == [1,2,3,4,5,6,7,8,9]
     end
   end
 
@@ -53,13 +53,13 @@ describe Game do
 
     it "should place the players move onto the board" do
       g.place_move
-      g.get_board_positions.should include("X")
+      g.board.positions.should include("X")
     end
 
     it "should place the computers move onto the board" do
       g.cycle_players
       g.place_move
-      g.get_board_positions.should include("O")
+      g.board.positions.should include("O")
     end
 
     it "should know who the current player is at the beginning of the game" do

@@ -7,8 +7,8 @@ class GameLoop
     @output = output
     @input = input
     choose_player_type ? @player1 = Player.new("X", Human.new) : nil
-    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, @player1, nil)
-    self.main(@game)
+    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil) # extract this to a method
+    self.main(@game) # extract start method
   end
 
   def main(game)
@@ -19,7 +19,7 @@ class GameLoop
       break if game.is_over?
       game.cycle_players
     end
-    self.main(Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, @player1, nil)) if play_again?
+    self.main(Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil)) if play_again?
   end
 
   def play_again?
@@ -35,5 +35,6 @@ class GameLoop
     response.downcase
     response == "human"
   end
+
 
 end

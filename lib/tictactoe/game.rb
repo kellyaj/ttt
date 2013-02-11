@@ -25,11 +25,7 @@ class Game
     @output.puts 'Tic-Tac-Toe Time!'
   end
 
-  def get_board_positions
-    @board.positions
-  end
-
-  def get_player_move
+  def get_player_move # this is where available spots is passed in
     player_move = @current_player.get_player_move(@board.available_spots)
   end
 
