@@ -7,7 +7,7 @@ class GameLoop
     @output = output
     @input = input
     choose_player_type ? @player1 = Player.new("X", Human.new) : nil
-    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil) # extract this to a method
+    create_game
   end
 
   def main(game)
@@ -18,7 +18,11 @@ class GameLoop
       break if game.is_over?
       game.cycle_players
     end
-    self.main(Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil)) if play_again?
+    self.main(create_game) if play_again?
+  end
+
+  def create_game
+    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil)
   end
 
   def play_again?
