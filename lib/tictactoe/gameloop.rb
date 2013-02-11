@@ -8,7 +8,6 @@ class GameLoop
     @input = input
     choose_player_type ? @player1 = Player.new("X", Human.new) : nil
     @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil) # extract this to a method
-    self.main(@game) # extract start method
   end
 
   def main(game)
@@ -36,5 +35,8 @@ class GameLoop
     response == "human"
   end
 
+  def start_game
+    self.main(@game)
+  end
 
 end

@@ -17,8 +17,8 @@ describe GameLoop do
   end
 
   it "should allow a human to decide who plays" do
-  	gloop = GameLoop.new(output, StringIO.new("human"))
-  	gloop.game.current_player.player_type.class.should == Human
+    new_game_loop = GameLoop.new(output, StringIO.new("human"))
+    new_game_loop.game.current_player.player_type.should be_a(Human)
   end
 
 end
