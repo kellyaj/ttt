@@ -13,4 +13,17 @@ describe BoardPrinter do
     output.should_receive(:puts).with("    " + [7,8,9].join("   |   "))
     printer.print_board(board)
   end
+
+  it "should print the board if there's more than three rows" do
+    board = [1,2,3,4,5,6,7,8,9,10,11,12]
+    printer = BoardPrinter.new(output)
+    output.should_receive(:puts).with("    " + [1,2,3].join("   |   "))
+    output.should_receive(:puts).with("   " + "-------------------")
+    output.should_receive(:puts).with("    " + [4,5,6].join("   |   "))
+    output.should_receive(:puts).with("   " + "-------------------")
+    output.should_receive(:puts).with("    " + [7,8,9].join("   |   "))
+    output.should_receive(:puts).with("   " + "-------------------")
+    output.should_receive(:puts).with("    " + [10,11,12].join("   |   "))
+    printer.print_board(board)
+  end
 end

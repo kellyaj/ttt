@@ -17,6 +17,11 @@ class BoardPrinter
 
   def horizontal_rows(board)
     rows = []
-    rows << board.slice(0, 3) << board.slice(3, 3) << board.slice(6, 3)
+    board_index = 0 
+    (board.length / 3).times do 
+      rows << board.slice(board_index, 3)
+      board_index += 3
+    end
+    rows
   end
 end
