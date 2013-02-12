@@ -4,10 +4,12 @@ require 'stringio'
 describe Game do
 
   let (:output) {output = double('output').as_null_object}
-  
+  let (:cpu1) { Player.new(Computer.new)}
+  let (:cpu2) { Player.new(Computer.new)}
+  let (:human) { Player.new(Human.new)}
 
   describe "#initialize"  do
-  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
+  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)}
 
     it "should initialize with a new board" do
       g.board.positions.should == [1,2,3,4,5,6,7,8,9]
@@ -15,7 +17,7 @@ describe Game do
   end
 
   describe "#game start" do
-  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
+  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)}
 
     it "should have a welcome message" do
       output.should_receive(:puts).with('Tic-Tac-Toe Time!')
@@ -24,18 +26,19 @@ describe Game do
   end
 
   describe "#game loop" do
-  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
-
     it "should know that the game is not over at the beginning" do
+      g = Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)
       g.is_over?.should == false
     end
 
     it "should be able to cycle players" do
+      g = Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)
       g.cycle_players
       g.current_player.mark.should == "O"
     end
 
     it "should report who won the game" do
+      g = Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)
       g.board.positions[0] = "X"
       g.board.positions[1] = "X"
       g.board.positions[2] = "X"
@@ -45,7 +48,7 @@ describe Game do
   end
 
   describe "#moves" do
-  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)}
+  let (:g) {Game.new(output, [1, 2, 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)}
 
     it "should get a player move after prompt" do
       g.get_player_move.should_not be_nil
@@ -69,7 +72,7 @@ describe Game do
 
   describe "#board injection" do
     it "should accept an injected board" do
-      g = Game.new(output, ["X", "O", 3, 4, 5, 6, 7, 8, 9], $stdin, nil, nil)
+      g = Game.new(output, ["X", "O", 3, 4, 5, 6, 7, 8, 9], $stdin, cpu1, cpu2)
       g.board.positions.should include("X" && "O")
     end
   end

@@ -1,10 +1,9 @@
 require 'pry'
 class Player
 
-  attr_reader :mark, :player_type
+  attr_accessor :mark, :player_type
 
-  def initialize(mark, player_type)
-    @mark = mark
+  def initialize(player_type)
     @player_type = player_type
   end
 

@@ -7,14 +7,10 @@ class Game
     @output, @input = output, input
     @board = Board.new(board, output)
     @scorer, @printer = Scorer.new, BoardPrinter.new(output)
-    assign_players(player1, player2)
+    @player1, @player2 = player1, player2
     @current_player = @player1
+    @player1.mark, @player2.mark = "X", "O"
     @players_array = [@player1, @player2]
-  end
-
-  def assign_players(player1, player2)
-    player1.nil? ? @player1 = Player.new("X", Computer.new) : @player1 = player1
-    player2.nil? ? @player2 = Player.new("O", Computer.new) : @player2 = player2
   end
 
   def print_board
