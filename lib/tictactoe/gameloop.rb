@@ -24,8 +24,12 @@ class GameLoop
     self.main(create_game) if play_again?
   end
 
-  def create_game
-    @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil)
+  def create_game(board_size = 3)
+    if board_size == 3
+      @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, nil)
+    else
+      @game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], @input, @player1, nil)
+    end
   end
 
   def play_again?
