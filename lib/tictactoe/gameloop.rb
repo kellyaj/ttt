@@ -1,7 +1,7 @@
 require 'pry'
 class GameLoop
 
-  attr_reader :game
+  attr_accessor :game
 
   def initialize(output, input = $stdin)
     @output = output

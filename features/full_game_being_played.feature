@@ -8,3 +8,8 @@ So that I can crush him in tic-tac-toe battle. And see the game over message.
 		Given that there are two computer players
 		When I start the game
 		Then they should be able to play until the end.
+
+	Scenario: full game play with humans
+		Given that there are two human players
+		When I start the game
+		Then we should be able to play until the end.
