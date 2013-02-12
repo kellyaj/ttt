@@ -53,7 +53,7 @@ class Board
   end 
 
   def available_spots
-    @positions.select { |spot| spot.to_s =~ /\d/}
+    @positions.select { |spot| spot.to_s =~ /\d/ }
   end
 
 end
