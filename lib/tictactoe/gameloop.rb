@@ -15,7 +15,10 @@ class GameLoop
     while !game.is_over?
       game.print_board
       game.place_move
-      break if game.is_over?
+      if game.is_over?
+        game.print_board
+        break
+      end
       game.cycle_players
     end
     self.main(create_game) if play_again?

@@ -1,9 +1,9 @@
 class Board
 
   attr_reader :positions
-
+  # Board.new(["X","O",3,"X",5,6,7,8,9])
   def initialize(board, output)
-    @positions = board
+    @positions = board # [1,2,3,5,6,7,8,9]
     @output = output
   end
 
@@ -53,13 +53,7 @@ class Board
   end 
 
   def available_spots
-    untaken_positions = []
-    @positions.each do |position|
-      unless position == ("X" || "O")
-        untaken_positions << position
-      end
-    end
-    untaken_positions.delete_if {|x| x.class == String}
+    @positions.select { |spot| spot.to_s =~ /\d/}
   end
 
 end

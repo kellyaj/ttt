@@ -5,12 +5,10 @@ class BoardPrinter
     @output = output
   end
 
-  def print_board(board)
-    # check for is_last rows.last?
-    rows = horizontal_rows(board)
-    rows.each do |row|
-      @output.puts "    " + row.join("   |   ")
-      @output.puts "   " + "-------------------"
+  def print_board(board_array, rows, columns) #
+    rows.times do |n|
+      @output.puts "    " + board_array.slice(n * rows, columns).join("   |   ")
+      @output.puts "   " + "-------------------" unless n == rows - 1
     end
     @output.puts "\n\n"
   end

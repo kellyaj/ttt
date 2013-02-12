@@ -18,14 +18,14 @@ class Game
   end
 
   def print_board
-    @printer.print_board(@board.positions) 
+    @printer.print_board(@board.positions, 3, 3) 
   end
 
   def welcome_message
     @output.puts 'Tic-Tac-Toe Time!'
   end
 
-  def get_player_move # this is where available spots is passed in
+  def get_player_move
     player_move = @current_player.get_player_move(@board.available_spots)
   end
 
