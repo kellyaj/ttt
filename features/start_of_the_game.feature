@@ -7,4 +7,4 @@ So that I can play the game
   Scenario: start game
     Given that I am not yet playing the game
     When I start the game
-    Then I should see a message saying "Tic-Tac-Toe Time!"
+    Then I should see a welcome message.

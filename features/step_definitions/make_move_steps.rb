@@ -15,14 +15,17 @@ def output
 end
 
 Given /^that the game has just begun$/ do
-  game = GameLoop.new(output)
-  game.start
+  require 'stringio'
+  @input = "1" #\n4\n2\n5\n3\nno"
+  @player1 = Player.new(Computer.new)
+  @player2 = Player.new(Computer.new)
+  @new_game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, @player2)
 end
 
-When /^a player sees the prompt "(.*?)"$/ do |message|
-  output.messages.should include(message)
+When /^it is a players turn$/ do
+  # nothing
 end
 
-Then /^the player should be able to enter (\d+) through (\d+) to select a space\.$/ do |arg1, arg2|
-    pending # express the regexp above with the code you wish you had
+Then /^the player should be able to (\d+) select a space\.$/ do |arg1|
+  @new_game.get_player_move.should_not be_nil
 end
