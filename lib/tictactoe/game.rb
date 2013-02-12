@@ -34,11 +34,8 @@ class Game
   end
 
   def is_over?
-    if @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
-      @printer.print_board(@board.positions)
-      winner_message
-    end
-    @scorer.is_won?(@board) || @scorer.is_stalemate?(@board)
+    winner_message if @scorer.game_over?(@board)
+    @scorer.game_over?(@board)
   end
 
   def cycle_players

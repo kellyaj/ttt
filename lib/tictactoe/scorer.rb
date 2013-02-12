@@ -12,4 +12,8 @@ class Scorer
     board.positions.map(&:to_i).inject(:+) == 0
   end
 
+  def game_over?(board)
+    is_won?(board) || is_stalemate?(board)
+  end
+
 end

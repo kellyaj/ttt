@@ -8,7 +8,7 @@ class Board
   end
 
   def get_rows
-    # use old concat code from before
+    # board.horizontal_rows.concat(board.vertical_rows).concat(board.diagonal_rows).any? {|row| is_won_row?(row)}
     rows = []
     rows << @positions.slice(0, 3)
     rows << @positions.slice(3, 3)
