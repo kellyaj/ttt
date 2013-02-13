@@ -13,7 +13,7 @@ describe Computer do
 
   context "choosing a move" do
   	it "should always choose a winning move if it is available" do
-  		board = Board.new([3,4,5,6,7,8,9], output)
+  		board = Board.new(["X","X",3,4,5,6,7,8,9], output)
   		c = Computer.new
   		c.choose_move(board).should == 3
   	end

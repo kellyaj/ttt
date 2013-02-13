@@ -1,4 +1,8 @@
-class Computer
+class Computer < Player
+
+	def initialize
+		super()
+	end
 	
   def choose_move(board)
   	board.available_spots.sample
