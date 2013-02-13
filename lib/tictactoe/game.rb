@@ -22,7 +22,7 @@ class Game
   end
 
   def get_player_move
-    player_move = @current_player.get_player_move(@board.available_spots)
+    player_move = @current_player.get_player_move(@board)
   end
 
   def place_move

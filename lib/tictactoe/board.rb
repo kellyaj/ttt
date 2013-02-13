@@ -1,9 +1,9 @@
 class Board
 
   attr_reader :positions
-  # Board.new(["X","O",3,"X",5,6,7,8,9])
+
   def initialize(board, output)
-    @positions = board # [1,2,3,5,6,7,8,9]
+    @positions = board 
     @output = output
   end
 

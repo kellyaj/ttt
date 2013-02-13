@@ -4,13 +4,15 @@ class Human
 	def initialize(output = $stdout, input = $stdin)
 		@input = input
 		@output = output
+		@board = nil
 	end
 
-	def choose_move(available_spots)
+	def choose_move(board)
+		@board = board
 		move_message
-		display_available_moves(available_spots)
+		display_available_moves(@board.available_spots)
 		user_input = @input.gets.to_i
-		valid_move?(user_input, available_spots) ? user_input : invalid_message(available_spots)
+		valid_move?(user_input, @board.available_spots) ? user_input : invalid_message(@board.available_spots)
 	end
 
 	def valid_move?(user_input, available_spots)
@@ -27,7 +29,7 @@ class Human
 
 	def invalid_message(available_spots)
 		@output.puts 'That is not a valid move. Try again.'
-		choose_move(available_spots)
+		choose_move(@board)
 	end
 
 end
