@@ -1,7 +1,7 @@
 class Computer < Player
 
 	def initialize
-		super()
+		super(self)
 	end
 	
   def choose_move(board)
