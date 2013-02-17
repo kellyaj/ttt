@@ -51,8 +51,8 @@ class GameLoop
   end
 
   def assign_players(player1, player2)
-    player1 ? @player1 = Player.new(Human.new) : @player1 = Player.new(Computer.new)
-    player2 ? @player2 = Player.new(Human.new) : @player2 = Player.new(Computer.new)
+    player1 ? @player1 = Player.new(Human.new) : @player1 = Player.new(Computer.new("X"))
+    player2 ? @player2 = Player.new(Human.new) : @player2 = Player.new(Computer.new("O"))
   end
 
 end

@@ -3,14 +3,14 @@ require 'pry'
 
 class Computer < Player
 
-	def initialize
+	def initialize(mark)
 		super(self)
 		@scorer = Scorer.new
+    @mark = mark
 	end
 	
   def choose_move(board)
     minimax(board)
-    # return an integer 
   end
 
   def minimax(board)
@@ -24,10 +24,8 @@ class Computer < Player
     highest_score = -1
     return score_move(board, current_player), nil if @scorer.game_over?(board)
     board.available_spots.each do |spot|
-      # if current = @mark find highest
-      # if current = other find lowest
       board.place_move(spot, current_player)
-      spot_score = scorimax(board, cycle_players(current_player)).first
+      spot_score = -(scorimax(board, cycle_players(current_player)).first)
       board.positions[spot-1] = spot
       if spot_score > highest_score
         prime_move = spot
@@ -39,11 +37,9 @@ class Computer < Player
 
   def score_move(board, current_player)
   	if current_player == @mark && @scorer.is_won?(board)
-  		1
-  	elsif @scorer.is_stalemate?(board)
+  		-1
+  	else
   		0
-    else
-      -1
   	end
   end
 
