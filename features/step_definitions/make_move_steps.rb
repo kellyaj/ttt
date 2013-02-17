@@ -17,8 +17,8 @@ end
 Given /^that the game has just begun$/ do
   require 'stringio'
   @input = "1" #\n4\n2\n5\n3\nno"
-  @player1 = Player.new(Computer.new)
-  @player2 = Player.new(Computer.new)
+  @player1 = Player.new(Computer.new("X"))
+  @player2 = Player.new(Computer.new("O"))
   @new_game = Game.new(@output, [1, 2, 3, 4, 5, 6, 7, 8, 9], @input, @player1, @player2)
 end
 

@@ -30,7 +30,11 @@ class Game
   end
 
   def is_over?
-    winner_message if @scorer.game_over?(@board)
+    if @scorer.is_stalemate?(@board)
+      stalemate_message
+    elsif @scorer.game_over?(@board)
+      winner_message
+    end
     @scorer.game_over?(@board)
   end
 
@@ -40,6 +44,10 @@ class Game
 
   def winner_message
     @output.puts("#{@current_player.mark} has won the game")
+  end
+
+  def stalemate_message
+    @output.puts("The game has ended in a stalemate")
   end
 
 end

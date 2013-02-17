@@ -45,17 +45,4 @@ describe Scorer do
     end
   end
 
-  describe "#is block?" do
-    it "knows if a row is blocked" do
-      board = Board.new([1, 2, 3, "X", "X", "O", 7, 8, 9], output)
-      Scorer.new.is_won?(board).should == false
-      Scorer.new.is_block?(board).should == true
-    end
-
-    it "knows if a column is blocked" do
-      board = Board.new(["X", 2, 3, "X", "X", 6, "O", 8, 9], output)
-      Scorer.new.is_won?(board).should == false
-      Scorer.new.is_block?(board).should == true      
-    end
-  end
 end

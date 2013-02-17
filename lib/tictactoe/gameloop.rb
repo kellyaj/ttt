@@ -33,7 +33,7 @@ class GameLoop
   end
 
   def play_again?
-    @output.puts 'Would you like to play again? Yes or no'
+    @output.puts "Would you like to play again? 'yes' or 'no'"
     response = @input.gets.chomp
     response.downcase
     response == "yes"
