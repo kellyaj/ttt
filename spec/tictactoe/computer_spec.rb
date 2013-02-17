@@ -20,22 +20,22 @@ describe Computer do
   end
 
   describe "score_move" do
-    it "should return 1 for a board that is won by a player" do
+    xit "should return 1 for a board that is won by a player" do
       board = Board.new(["X","X","X","O","X","O","O","O","X"], output)
       computer.score_move(board).should == 1
     end
 
-    it "should return 1 for a board that is a column based win" do
+    xit "should return 1 for a board that is a column based win" do
       board = Board.new(["X", 2, "O", "X", "O", 6, "X", 8, 9], output)
       computer.score_move(board).should == 1
     end
 
-    it "should return -1 for a board that is not won by a player" do
+    xit "should return -1 for a board that is not won by a player" do
       board = Board.new([1,"X","X","O","X","O","O","O","X"], output)
       computer.score_move(board).should == -1
     end
 
-    it "should return 0 for a board that is a stalemate" do
+    xit "should return 0 for a board that is a stalemate" do
       board = Board.new(["X","O","O","O","X","X","X","X","O"], output)
       computer.score_move(board).should == 0
     end
@@ -75,7 +75,7 @@ describe Computer do
   end
   context "making a blocking move" do
   	it "should always choose a row block if available" do
-  		board = Board.new([1,2,3,"O","O",6,7,8,9], output)
+  		board = Board.new(["X",2,3,"O","O",6,7,"X",9], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 6
   	end
