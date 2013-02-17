@@ -43,38 +43,38 @@ describe Computer do
 
   context "making the winning move" do
 
-  	it "should take the obvious winning move" do
+  	xit "should take the obvious winning move" do
   		board = Board.new([1,"X","X","O","X","O","O","O","X"], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 1
   	end
 
-  	it "should always choose a winning row move if it is available" do
+  	xit "should always choose a winning row move if it is available" do
   		board = Board.new(["X","X",3,4,"O",6,7,"O","O"], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 3
   	end
 
-  	it "should always choose a winning column move if it is available" do
+  	xit "should always choose a winning column move if it is available" do
   		board = Board.new(["X",2,3,"X",5,6,7,8,9], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 7
   	end
 
-  	it "should always choose a winning diagonal move if it is available" do
+  	xit "should always choose a winning diagonal move if it is available" do
   		board = Board.new([1,2,"X",4,"X","O","O","O","X"], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 1
   	end
 
-  	it "should always choose a winning alternate row move if it is available" do
+  	xit "should always choose a winning alternate row move if it is available" do
   		board = Board.new([1,2,3,"X","X",6,7,8,9], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 6
   	end
   end
   context "making a blocking move" do
-  	it "should always choose a row block if available" do
+  	xit "should always choose a row block if available" do
   		board = Board.new(["X",2,3,"O","O",6,7,"X",9], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 6
@@ -92,4 +92,93 @@ describe Computer do
   		computer.minimax(board).should == 9
   	end
   end
+
+  context "tuning the algorithm" do
+    it "should not lose in situation number 1" do
+      # Human chose 5, he chose 8, human chooses 9 for the win
+      #  X has won the game
+      #  X   |   X   |   O
+      # -------------------
+      #  4   |   X   |   6
+      # -------------------
+      #  O   |   O   |   X
+      board = Board.new(["X", "X", "O", 4, "X", 6, "O", 8, 9], output)
+      computer.mark = "O"
+      computer.minimax(board).should == 9
+    end
+  end
+
 end
+
+
+# Tic-Tac-Toe Time!
+#     1   |   2   |   3
+#    -------------------
+#     4   |   5   |   6
+#    -------------------
+#     7   |   8   |   9
+
+
+# Choose a space to occupy.
+# Available moves: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# 1
+#     X   |   2   |   3
+#    -------------------
+#     4   |   5   |   6
+#    -------------------
+#     7   |   8   |   9
+
+
+#     X   |   2   |   3
+#    -------------------
+#     4   |   5   |   6
+#    -------------------
+#     O   |   8   |   9
+
+
+# Choose a space to occupy.
+# Available moves: [2, 3, 4, 5, 6, 8, 9]
+# 2
+#     X   |   X   |   3
+#    -------------------
+#     4   |   5   |   6
+#    -------------------
+#     O   |   8   |   9
+
+
+#     X   |   X   |   O
+#    -------------------
+#     4   |   5   |   6
+#    -------------------
+#     O   |   8   |   9
+
+
+# Choose a space to occupy.
+# Available moves: [4, 5, 6, 8, 9]
+# 5
+#     X   |   X   |   O
+#    -------------------
+#     4   |   X   |   6
+#    -------------------
+#     O   |   8   |   9
+
+
+#     X   |   X   |   O
+#    -------------------
+#     4   |   X   |   6
+#    -------------------
+#     O   |   O   |   9
+
+
+# Choose a space to occupy.
+# Available moves: [4, 6, 9]
+# 9
+# X has won the game
+#     X   |   X   |   O
+#    -------------------
+#     4   |   X   |   6
+#    -------------------
+#     O   |   O   |   X
+
+
+

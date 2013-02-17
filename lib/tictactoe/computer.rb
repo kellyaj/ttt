@@ -13,33 +13,28 @@ class Computer < Player
     # return an integer 
   end
 
-  def minimax(board, depth = 0)
+  def minimax(board)
     current_player = @mark
-    depth += 1
-    prime_move = -1
+    return scorimax(board, current_player).last
+  end
+
+  def scorimax(board, current_player) 
+    spot_score = -1
+    prime_move = nil
     highest_score = -1
-    board.available_spots.each do |spot| 
-      board.place_move(spot, current_player) 
-      game_status = @scorer.game_over?(board)
-      spot_score = scorimax(board, depth, cycle_players(current_player))
-      board.positions[spot-1] = spot 
-      if spot_score > highest_score || game_status
+    return score_move(board, current_player), nil if @scorer.game_over?(board)
+    board.available_spots.each do |spot|
+      # if current = @mark find highest
+      # if current = other find lowest
+      board.place_move(spot, current_player)
+      spot_score = scorimax(board, cycle_players(current_player)).first
+      board.positions[spot-1] = spot
+      if spot_score > highest_score
         prime_move = spot
         highest_score = spot_score
       end
     end
-    return prime_move
-  end
-
-  def scorimax(board, depth, current_player) 
-    spot_score = -1
-    return score_move(board, current_player) if @scorer.game_over?(board)
-    board.available_spots.each do |spot|
-      board.place_move(spot, current_player)
-      spot_score = scorimax(board, depth, cycle_players(current_player))
-      board.positions[spot-1] = spot
-    end
-    return spot_score
+    return highest_score, prime_move
   end
 
   def score_move(board, current_player)
