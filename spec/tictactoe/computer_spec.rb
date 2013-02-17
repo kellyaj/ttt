@@ -74,7 +74,7 @@ describe Computer do
   	end
   end
   context "making a blocking move" do
-  	xit "should always choose a row block if available" do
+  	it "should always choose a row block if available" do
   		board = Board.new([1,2,3,"O","O",6,7,8,9], output)
   		computer.mark = "X"
   		computer.minimax(board).should == 6

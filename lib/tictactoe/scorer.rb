@@ -16,4 +16,8 @@ class Scorer
     is_won?(board) || is_stalemate?(board)
   end
 
+  def is_block?(board)
+    board.get_rows.any? { |row| row.uniq.length == 2 }
+  end
+
 end

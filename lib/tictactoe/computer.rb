@@ -10,7 +10,10 @@ class Computer < Player
 	
   def choose_move(board)
     # minimax(board)
+    # return an integer 
   end
+
+# board.positions => 
 
 
   def minimax(board, depth = 0)
@@ -26,13 +29,7 @@ class Computer < Player
         prime_move = spot
         highest_score = spot_score
       end
-      #board.place_move(prime_move,@mark)
-      #return prime_move if @scorer.game_over?(board) || depth == 9 # this was also below the recursion
-      #board.positions[prime_move-1] = prime_move
-      #minimax(board, depth, move_hash)
-    end 
-    #minimax(board, depth, move_hash)
-    #return highest_score #if @scorer.game_over?(board) || depth == 9
+    end
     return prime_move
   end
 
