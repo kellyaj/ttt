@@ -4,8 +4,8 @@ require 'stringio'
 describe Game do
 
   let (:output) {output = double('output').as_null_object}
-  let (:cpu1) { Player.new(Computer.new)} # need to adjust these for Computer's new arg
-  let (:cpu2) { Player.new(Computer.new)}
+  let (:cpu1) { Player.new(Computer.new("X"))}
+  let (:cpu2) { Player.new(Computer.new("O"))}
   let (:human) { Player.new(Human.new)}
 
   describe "#initialize"  do

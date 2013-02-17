@@ -18,7 +18,7 @@ describe Player do
   	end
 
   	it "should be able to get a move from a computer player type" do
-  		computer = Player.new(Computer.new)
+  		computer = Player.new(Computer.new("X"))
   		computer.get_player_move(board).should be_an(Integer)
   	end
   end
