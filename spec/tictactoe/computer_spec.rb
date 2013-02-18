@@ -71,6 +71,13 @@ describe Computer do
       computer.mark = "O"
       computer.minimax(board).should_not == 2 || 4 || 6 || 8
     end
+
+    it "should choose a win over a block" do
+      board = Board.new(["X", "X", 3, 4, "X", 6, "O", "O", 9], output)
+      computer.mark = "O"
+      computer.minimax(board).should == 9
+    end
+
   end
 
 end
