@@ -78,6 +78,12 @@ describe Computer do
       computer.minimax(board).should == 9
     end
 
+    it "should make a necessary block" do
+      board = Board.new(["X", "X", 3, 4, "O", "O", 7, 8, "X"], output)
+      computer.mark = "O"
+      computer.minimax(board).should == 3
+    end
+
   end
 
 end
