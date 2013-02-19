@@ -29,7 +29,6 @@ class Computer < Player
       board.place_move(spot, current_player)
       spot_score = -scorimax(board, cycle_players(current_player), depth).first
       board.positions[spot-1] = spot
-      #binding.pry if depth == 1 && spot == 6
       if spot_score > highest_score 
         prime_move = spot
         highest_score = spot_score
