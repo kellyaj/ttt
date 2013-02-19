@@ -18,16 +18,19 @@ class Computer < Player
     return scorimax(board, current_player).last
   end
 
-  def scorimax(board, current_player) 
+  def scorimax(board, current_player, depth = 0)
     spot_score = -1
     prime_move = nil
     highest_score = -1
-    return score_move(board, current_player), nil if @scorer.game_over?(board)
+    depth = depth
+    return score_move(board, current_player, depth), nil if @scorer.game_over?(board)
+    depth += 1
     board.available_spots.each do |spot|
       board.place_move(spot, current_player)
-      spot_score = -(scorimax(board, cycle_players(current_player)).first)
+      spot_score = -scorimax(board, cycle_players(current_player), depth).first
       board.positions[spot-1] = spot
-      if spot_score > highest_score
+      #binding.pry if depth == 1 && spot == 6
+      if spot_score > highest_score 
         prime_move = spot
         highest_score = spot_score
       end
@@ -35,11 +38,11 @@ class Computer < Player
     return highest_score, prime_move
   end
 
-  def score_move(board, current_player)
-  	if current_player == @mark && @scorer.is_won?(board)
-  		-1
+  def score_move(board, current_player, depth)
+  	if @scorer.is_won?(board)
+      (1.0 / -depth)
   	else
-  		0
+      0
   	end
   end
 

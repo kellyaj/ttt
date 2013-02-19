@@ -17,13 +17,23 @@ describe Computer do
     it "should return -1 for a board that is won by a player" do
       board = Board.new(["X","X","X","O","X","O","O","O","X"], output)
       current_player = "X"
-      computer.score_move(board, current_player).should == -1
+      computer.score_move(board, current_player, 1).should == -1
     end
 
     it "should return 0 for a board that is a stalemate" do
       board = Board.new(["X","O","O","O","X","X","X","X","O"], output)
       current_player = "X"
-      computer.score_move(board, current_player).should == 0
+      computer.score_move(board, current_player, 1).should == 0
+    end
+
+    it "should give a higher score to a lower depth" do
+      depth1 = 1
+      board = Board.new(["X","X","X","O","X","O","O","O","X"], output)
+      current_player = "X"
+      test_one = -computer.score_move(board, current_player, depth1)
+      depth2 = 3
+      test_two = -computer.score_move(board, current_player, depth2)
+      test_one.should be > test_two
     end
   end
 
@@ -62,6 +72,12 @@ describe Computer do
       computer.mark = "O"
       computer.minimax(board).should_not be_nil
     end
+
+    it "should take the win in situation number 2" do
+      board = Board.new(["X", 2, "X", "O", "O", 6, "X", 8, 9], output)
+      computer.mark = "O"
+      computer.minimax(board).should == 6
+    end
   end
 
   describe "scorimax" do
@@ -76,12 +92,6 @@ describe Computer do
       board = Board.new(["X", "X", 3, 4, "X", 6, "O", "O", 9], output)
       computer.mark = "O"
       computer.minimax(board).should == 9
-    end
-
-    it "should make a necessary block" do
-      board = Board.new(["X", "X", 3, 4, "O", "O", 7, 8, "X"], output)
-      computer.mark = "O"
-      computer.minimax(board).should == 3
     end
 
   end
