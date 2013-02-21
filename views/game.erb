@@ -4,8 +4,16 @@
     <title> Tic Tac Toe </title>
   </head>
   <body>
+
     <h1> Don't hate the player, hate the game </h1>
-    <p> <a href='/make_move'> Place a move </a></p>
+
+    <% if @game.is_over? %>
+      <p> The Game is over </p>
+      <p> <a href='/reset_session'> Play Again? </a> </p>
+    <% else %>
+      <p> <a href='/make_move'> Place a move </a></p>
+    <% end %>
+
     <p> <%=  %> </p>
     <table border="1">
       <tr>

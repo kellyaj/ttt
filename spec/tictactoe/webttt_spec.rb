@@ -31,5 +31,13 @@ describe "WebTTT" do
       last_response.should be_ok
       last_response.body.should include("[1, 2, 3, 4, 5, 6, 7, 8, 9]")
     end
+
+    it "should be able to have a computer's move properly placed" do
+      get '/game'
+      last_response.should be_ok
+      get '/make_move'
+      last_response.should be_ok
+      last_response.body.should include('["X", 2, 3, 4, 5, 6, 7, 8, 9]')
+    end
   end
 end
