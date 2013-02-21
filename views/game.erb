@@ -6,7 +6,9 @@
   <body>
 
     <h1> Don't hate the player, hate the game </h1>
-    <h2> Currently <%= @current_player.mark %>'s turn </h1>
+    <% unless @game.is_over? %>
+      <h2> Currently <%= @current_player.mark %>'s turn </h1>
+    <% end %>
 
     <% if @game.is_over? %>
       <p> The Game is over </p>
@@ -18,24 +20,24 @@
       <p> <a href='/make_move'> Place a move </a></p>
     <% end %>
 
-    <p> <%=  %> </p>
     <table border="1">
       <tr>
-        <td><%= @spots[0] %></td>
-        <td><%= @spots[1] %></td>
-        <td><%= @spots[2] %></td>
+        <td><a href='/make_move/1'> <%= @spots[0] %> </a></td>
+        <td><a href='/make_move/2'> <%= @spots[1] %> </td>
+        <td><a href='/make_move/3'> <%= @spots[2] %> </td>
       </tr>
       <tr>
-        <td><%= @spots[3] %></td>
-        <td><%= @spots[4] %></td>
-        <td><%= @spots[5] %></td>
+        <td><a href='/make_move/4'> <%= @spots[3] %> </td>
+        <td><a href='/make_move/5'> <%= @spots[4] %> </td>
+        <td><a href='/make_move/6'> <%= @spots[5] %> </td>
       </tr>
       <tr>
-        <td><%= @spots[6] %></td>
-        <td><%= @spots[7] %></td>
-        <td><%= @spots[8] %></td>
+        <td><a href='/make_move/7'> <%= @spots[6] %> </td>
+        <td><a href='/make_move/8'> <%= @spots[7] %> </td>
+        <td><a href='/make_move/9'> <%= @spots[8] %> </td>
       </tr>
     </table>
+
   </body>
 </html>
 

@@ -27,7 +27,11 @@ class WebTicTacToe < Sinatra::Base
     game = session[:game]
     current_player = game.current_player
     board = session[:board]
-    board.place_move(game.get_player_move, current_player.mark)
+    if current_player.player_type.class == Computer
+      board.place_move(game.get_player_move, current_player.mark)
+    else
+      board.place_move(session[:human_move].to_i, current_player.mark)
+    end
     game.cycle_players
     redirect '/game'
   end
@@ -44,6 +48,11 @@ class WebTicTacToe < Sinatra::Base
     redirect '/'
   end
 
+  get '/make_move/:human_move' do
+    session[:human_move] = params[:human_move]
+    redirect '/make_move'
+  end
+
   get '/cvc' do
     session[:player1] = Player.new(Computer.new("X"))
     session[:player2] = Player.new(Computer.new("O"))
@@ -57,7 +66,7 @@ class WebTicTacToe < Sinatra::Base
   end
 
   get '/hvc' do
-    session[:player1] = Player.new(Human.new)
+    session[:player1] = Player.new(Human.new($stdout, params[:human_move]))
     session[:player2] = Player.new(Computer.new("O"))
     redirect '/game'
   end
