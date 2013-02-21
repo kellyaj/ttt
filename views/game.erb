@@ -23,8 +23,10 @@
         or 
         <a href='/reset_session'> Choose new players</a> </p>
 
+    <% elsif @current_player.player_type.class == Computer %>
+      <p> <a href='/make_move'> Place the computer's move (this may take a couple seconds) </a></p>
     <% else %>
-      <p> <a href='/make_move'> Place a move </a></p>
+      <p> <%= @current_player.mark %>, choose a spot: </p>
     <% end %>
 
     <table border="1">
