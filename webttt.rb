@@ -66,7 +66,7 @@ class WebTicTacToe < Sinatra::Base
   end
 
   get '/hvc' do
-    session[:player1] = Player.new(Human.new($stdout, params[:human_move]))
+    session[:player1] = Player.new(Human.new)
     session[:player2] = Player.new(Computer.new("O"))
     redirect '/game'
   end
