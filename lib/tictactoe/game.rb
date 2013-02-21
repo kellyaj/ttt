@@ -1,7 +1,7 @@
 require 'pry'
 class Game
 
-  attr_reader :board, :current_player
+  attr_reader :board, :current_player, :scorer
 
   def initialize(output, board = [1,2,3,4,5,6,7,8,9], input = $stdin, player1, player2)
     @output, @input = output, input
@@ -48,6 +48,10 @@ class Game
 
   def stalemate_message
     @output.puts("The game has ended in a stalemate")
+  end
+
+  def is_stalemate?
+    @scorer.is_stalemate?(@board)
   end
 
 end

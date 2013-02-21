@@ -19,7 +19,7 @@ class WebTicTacToe < Sinatra::Base
     @current_player = @game.current_player
     session[:board] ||=  @game.board
     @board = session[:board]
-    @spots = @board.positions
+    @spots = @board.get_rows
     erb :game
   end
 
@@ -32,6 +32,7 @@ class WebTicTacToe < Sinatra::Base
     else
       board.place_move(session[:human_move].to_i, current_player.mark)
     end
+    session[:winner] = current_player if game.scorer.is_won?(board)
     game.cycle_players
     redirect '/game'
   end
@@ -73,3 +74,12 @@ class WebTicTacToe < Sinatra::Base
 end
 
 WebTicTacToe.run!
+
+
+        # <td height="100" width="100" align="center">
+        #   <% if @spots[0].class == Fixnum %>
+        #     <a href='/make_move/1'> <%= @spots[0] %> </a>
+        #   <% else %>
+        #     <%= @spots[0] %>
+        #   <% end %>
+        # </td>

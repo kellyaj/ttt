@@ -6,35 +6,66 @@
   <body>
 
     <h1> Don't hate the player, hate the game </h1>
+
     <% unless @game.is_over? %>
       <h2> Currently <%= @current_player.mark %>'s turn </h1>
     <% end %>
 
-    <% if @game.is_over? %>
+    <% if @game.is_stalemate? %>
+      <p> The Game ended in a stalemate. </p>
+      <p> <a href='/play_again'> Play Again? </a> or <a href='/reset_session'> Choose new players</a> </p>
+
+    <% elsif @game.is_over? %>
       <p> The Game is over </p>
+      <h3> <%= session[:winner].mark %> won the game. </h3>
       <p> 
         <a href='/play_again'> Play Again? </a> 
         or 
         <a href='/reset_session'> Choose new players</a> </p>
+
     <% else %>
       <p> <a href='/make_move'> Place a move </a></p>
     <% end %>
 
     <table border="1">
       <tr>
-        <td><a href='/make_move/1'> <%= @spots[0] %> </a></td>
-        <td><a href='/make_move/2'> <%= @spots[1] %> </td>
-        <td><a href='/make_move/3'> <%= @spots[2] %> </td>
+        <% @spots[0].each do |spot| %>
+          <td height="100" width="100" align="center">
+            <% if spot.class == Fixnum %>
+              <a href='/make_move/<%= spot.to_i%>'> 
+                <%= spot %>
+              </a>
+            <% else %>
+              <%= spot %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
       <tr>
-        <td><a href='/make_move/4'> <%= @spots[3] %> </td>
-        <td><a href='/make_move/5'> <%= @spots[4] %> </td>
-        <td><a href='/make_move/6'> <%= @spots[5] %> </td>
+        <% @spots[1].each do |spot| %>
+          <td height="100" width="100" align="center">
+            <% if spot.class == Fixnum %>
+              <a href='/make_move/<%= spot.to_i%>'> 
+                <%= spot %>
+              </a>
+            <% else %>
+              <%= spot %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
       <tr>
-        <td><a href='/make_move/7'> <%= @spots[6] %> </td>
-        <td><a href='/make_move/8'> <%= @spots[7] %> </td>
-        <td><a href='/make_move/9'> <%= @spots[8] %> </td>
+        <% @spots[2].each do |spot| %>
+          <td height="100" width="100" align="center">
+            <% if spot.class == Fixnum %>
+              <a href='/make_move/<%= spot.to_i%>'> 
+                <%= spot %>
+              </a>
+            <% else %>
+              <%= spot %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     </table>
 
