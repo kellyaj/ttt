@@ -9,7 +9,7 @@
 
     <% if @game.is_over? %>
       <p> The Game is over </p>
-      <p> <a href='/reset_session'> Play Again? </a> </p>
+      <p> <a href='/play_again'> Play Again? </a> or <a href='/reset_session'> Choose new players</a> </p>
     <% else %>
       <p> <a href='/make_move'> Place a move </a></p>
     <% end %>
