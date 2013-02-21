@@ -34,6 +34,10 @@ class WebTicTacToe < Sinatra::Base
     end
     session[:winner] = current_player if game.scorer.is_won?(board)
     game.cycle_players
+    new_current_player = game.current_player
+    if new_current_player.player_type.class == Computer
+      redirect '/make_move'
+    end
     redirect '/game'
   end
 
