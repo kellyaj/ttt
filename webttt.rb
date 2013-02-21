@@ -1,8 +1,10 @@
 require 'sinatra'
 $:.unshift(File.expand_path("../lib/", __FILE__))
 require 'tictactoe.rb'
-class Something < Sinatra::Base
-use Rack::Session::Pool
+
+class WebTicTacToe < Sinatra::Base
+
+  use Rack::Session::Pool
 
   get '/' do
     erb :index
@@ -21,4 +23,4 @@ use Rack::Session::Pool
   end
 end
 
-Something.run!
+WebTicTacToe.run!
