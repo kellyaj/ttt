@@ -8,12 +8,15 @@ class WebTicTacToe < Sinatra::Base
   use Rack::Session::Pool
 
   get '/' do
+    session[:confirmed] = true
     erb :index
   end
 
 
   get '/game' do
-    # what should I be putting for the I/O here? I guess it doesnt matter at this point
+    if session[:confirmed] != true
+      redirect '/'
+    end
     session[:game] ||= Game.new($stdout, [1,2,3,4,5,6,7,8,9], $stdin, session[:player1], session[:player2])
     @game = session[:game]
     @current_player = @game.current_player
@@ -45,6 +48,7 @@ class WebTicTacToe < Sinatra::Base
     player1, player2 = session[:player1], session[:player2]
     session.clear
     session[:player1], session[:player2] = player1, player2
+    session[:confirmed] = true
     redirect '/game'
   end
 
@@ -56,12 +60,6 @@ class WebTicTacToe < Sinatra::Base
   get '/make_move/:human_move' do
     session[:human_move] = params[:human_move]
     redirect '/make_move'
-  end
-
-  get '/cvc' do
-    session[:player1] = Player.new(Computer.new("X"))
-    session[:player2] = Player.new(Computer.new("O"))
-    redirect '/game'
   end
 
   get '/hvh' do
@@ -78,12 +76,3 @@ class WebTicTacToe < Sinatra::Base
 end
 
 WebTicTacToe.run!
-
-
-        # <td height="100" width="100" align="center">
-        #   <% if @spots[0].class == Fixnum %>
-        #     <a href='/make_move/1'> <%= @spots[0] %> </a>
-        #   <% else %>
-        #     <%= @spots[0] %>
-        #   <% end %>
-        # </td>
