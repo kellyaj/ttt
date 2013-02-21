@@ -14,10 +14,9 @@ class WebTicTacToe < Sinatra::Base
 
   get '/game' do
     # what should I be putting for the I/O here? I guess it doesnt matter at this point
-    
-    #player1, player2 = Player.new(Computer.new("X")), Player.new(Computer.new("O"))
     session[:game] ||= Game.new($stdout, [1,2,3,4,5,6,7,8,9], $stdin, session[:player1], session[:player2])
     @game = session[:game]
+    @current_player = @game.current_player
     session[:board] ||=  @game.board
     @board = session[:board]
     @spots = @board.positions
@@ -47,6 +46,18 @@ class WebTicTacToe < Sinatra::Base
 
   get '/cvc' do
     session[:player1] = Player.new(Computer.new("X"))
+    session[:player2] = Player.new(Computer.new("O"))
+    redirect '/game'
+  end
+
+  get '/hvh' do
+    session[:player1] = Player.new(Human.new)
+    session[:player2] = Player.new(Human.new)
+    redirect '/game'
+  end
+
+  get '/hvc' do
+    session[:player1] = Player.new(Human.new)
     session[:player2] = Player.new(Computer.new("O"))
     redirect '/game'
   end
