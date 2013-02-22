@@ -5,16 +5,17 @@
 <% end %>
 
 <% if @game.is_stalemate? %>
-  <p class="end-message"> The Game ended in a stalemate. </p>
+  <p class="play-info winner-message"> The Game ended in a stalemate. </p>
   <p> <a href='/play_again'> Play Again? </a> or <a href='/reset_session'> Choose new players</a> </p>
 
 <% elsif @game.is_over? %>
-  <p class="end-message"> The Game is over </p>
-  <h3> <%= session[:winner].mark %> won the game. </h3>
-  <p> 
+  <p class="play-info winner-message"> The Game is over. </p>
+  <h3 class="play-info winner-message"> <%= session[:winner].mark %> won the game. </h3>
+  <p class="play-info"> 
     <a href='/play_again'> Play Again? </a> 
     or 
-    <a href='/reset_session'> Choose new players</a> </p>
+    <a href='/reset_session'> Choose new players</a>
+  </p>
 
 <% else %>
   <p class="play-info choose-spot"> <%= @current_player.mark %>, choose a spot: </p>

@@ -5,19 +5,22 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href='http://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-    <div class="navbar">
-      <ul>
-        <li>
-          <a href="reset_session">Reset</a>
-        </li>
-        <li>
-          <a href="http://www.akells.com/projects"> About </a>
-        </li>
-    </div>
 
-    <div class="flash-message"> <%= @flash %> </div>
+
+  <body>
+    
     <div class="container">
+      <div class="flash-message"> <%= @flash %> </div>
+      <div class="navbar">
+        <ul>
+          <li>
+            <a href="reset_session">Reset</a>
+          </li>
+          <li>
+            <a href="http://www.akells.com/projects"> About </a>
+          </li>
+        </ul>
+      </div>
       
       <%= yield %>
 

@@ -59,6 +59,7 @@ strong {
 
 body {
   font-family: 'Armata', sans-serif;
+  background-color: #fff;
 }
 
 h1 {
@@ -81,8 +82,8 @@ h2 {
 }
 
 .navbar li {
-  display: inline;
-  padding: 10px;
+  display: inline-block;
+  padding: 5px;
 }
 
 .navbar a {
@@ -92,6 +93,9 @@ h2 {
 .container {
   width: 960px;
   margin: 0 auto;
+  background-color: #BEB9B9;
+  padding: 35px 0 35px 0;
+
 }
 
 .welcome {
@@ -140,4 +144,8 @@ h2 {
 .center {
   border-left: 3px solid black;
   border-right: 3px solid black;
+}
+
+.winner-message {
+  text-align: center;
 }
