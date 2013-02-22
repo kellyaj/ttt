@@ -108,8 +108,36 @@ h2 {
   padding: 15px 0 15px 0;
 }
 
-.choice-list {
-  
+.play-info {
+  padding: 10px;
 }
 
+.game-board {
+  margin: 20px 330px 0 330px;
+}
 
+.choose-spot {
+  margin-left: 150px;
+}
+
+.td-top {
+  padding-top: 40px;
+  border-bottom: 3px solid black;
+}
+
+.td-bot {
+  border-top: 3px solid black;
+}
+
+.mid-row {
+  padding: 40px 0 40px 0;
+}
+
+.bot-row {
+  padding-top: 40px;
+}
+
+.center {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
