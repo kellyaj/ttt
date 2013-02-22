@@ -12,11 +12,8 @@ class WebTicTacToe < Sinatra::Base
     erb :index
   end
 
-
   get '/game' do
-    if session[:confirmed] != true
-      redirect '/'
-    end
+    redirect '/' if session[:confirmed] != true || session[:player1] == nil
     session[:game] ||= Game.new($stdout, [1,2,3,4,5,6,7,8,9], $stdin, session[:player1], session[:player2])
     @game = session[:game]
     @current_player = @game.current_player
@@ -27,6 +24,7 @@ class WebTicTacToe < Sinatra::Base
   end
 
   get '/make_move' do
+    redirect '/' if session[:confirmed] != true || session[:player1] == nil
     game = session[:game]
     current_player = game.current_player
     board = session[:board]
@@ -39,12 +37,13 @@ class WebTicTacToe < Sinatra::Base
     game.cycle_players
     new_current_player = game.current_player
     if new_current_player.player_type.class == Computer
-      redirect '/make_move'
+      redirect '/make_move' unless game.is_over?
     end
     redirect '/game'
   end
 
   get '/play_again' do
+    redirect '/' if session[:confirmed] != true || session[:player1] == nil
     player1, player2 = session[:player1], session[:player2]
     session.clear
     session[:player1], session[:player2] = player1, player2
@@ -58,6 +57,7 @@ class WebTicTacToe < Sinatra::Base
   end
 
   get '/make_move/:human_move' do
+    redirect '/' if session[:confirmed] != true || session[:player1] == nil
     session[:human_move] = params[:human_move]
     redirect '/make_move'
   end
