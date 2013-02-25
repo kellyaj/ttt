@@ -62,6 +62,17 @@ class WebTicTacToe < Sinatra::Base
     redirect '/make_move'
   end
 
+  post '/game_setup' do
+    if params["setup"] == "Humans"
+      session[:player1] = Player.new(Human.new)
+      session[:player2] = Player.new(Human.new)     
+    else
+      session[:player1] = Player.new(Human.new)
+      session[:player2] = Player.new(Computer.new("O"))
+    end
+    redirect '/game'
+  end
+
   get '/hvh' do
     session[:player1] = Player.new(Human.new)
     session[:player2] = Player.new(Human.new)
