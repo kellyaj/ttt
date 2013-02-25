@@ -25,60 +25,78 @@
 <table border="1">
   <tr>
     <% @spots[0].each_with_index do |spot, index| %>
-    <% if index == 1 %>
-      <td height="100" width="100" align="center" class="td-top center">
-    <% else %>
-      <td height="100" width="100" align="center" class="td-top">
-    <% end %>
-        <div class="top-row">
-        <% if spot.class == Fixnum %>
-          <a href='/make_move/<%= spot.to_i%>'> 
-            <%= spot %>
-          </a>
+      <% if spot.class == Fixnum %> 
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-top center">
+          <a href='/make_move/<%= spot.to_i%>'>
         <% else %>
+          <td height="100" width="100" align="center" class="td-top">
+          <a href='/make_move/<%= spot.to_i%>'> 
+        <% end %> 
+
+      <% else %>
+
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-top center">
           <%= spot %>
+        <% else %>
+          <td height="100" width="100" align="center" class="td-top activated">
+          <%= spot %> 
         <% end %>
-      </div>
-      </td>
-    <% end %>
+          </a>
+        </td>
+      <% end %>
+  <% end %>
   </tr>
   <tr>
     <% @spots[1].each_with_index do |spot, index| %>
-      <% if index == 1 %>
-        <td height="100" width="100" align="center" class="td-mid center">
-      <% else %>
-        <td height="100" width="100" align="center" class="td-mid">
-      <% end %>
-        <div class="mid-row">
-        <% if spot.class == Fixnum %>
-          <a href='/make_move/<%= spot.to_i%>'> 
-            <%= spot %>
-          </a>
+      <% if spot.class == Fixnum %> 
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-mid center mid-row">
+          <a href='/make_move/<%= spot.to_i%>'>
         <% else %>
-          <%= spot %>
+          <td height="100" width="100" align="center" class="td-mid mid-row">
+          <a href='/make_move/<%= spot.to_i%>'> 
         <% end %>
-        </div>
-      </td>
-    <% end %>
+
+      <% else %>
+
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-mid center mid-row">
+          <%= spot %>
+        <% else %>
+          <td height="100" width="100" align="center" class="td-mid mid-row">
+          <%= spot %> 
+        <% end %>
+          </a>
+        </td>
+      <% end %>
+  <% end %>
   </tr>
   <tr>
     <% @spots[2].each_with_index do |spot, index| %>
-      <% if index == 1 %>
-        <td height="100" width="100" align="center" class="td-bot center">
-      <% else %>
-        <td height="100" width="100" align="center" class="td-bot">
-      <% end %>
-        <div class="bot-row">
-        <% if spot.class == Fixnum %>
-          <a href='/make_move/<%= spot.to_i%>'> 
-            <%= spot %>
-          </a>
+      <% if spot.class == Fixnum %> 
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-bot center bot-row">
+          <a href='/make_move/<%= spot.to_i%>'>
         <% else %>
-          <%= spot %>
+          <td height="100" width="100" align="center" class="td-bot bot-row">
+          <a href='/make_move/<%= spot.to_i%>'> 
         <% end %>
-      </div>
-      </td>
-    <% end %>
+
+      <% else %>
+
+        <% if index == 1 %>
+          <td height="100" width="100" align="center" class="td-bot center bot-row">
+          <%= spot %>
+        <% else %>
+          <td height="100" width="100" align="center" class="td-bot bot-row">
+          <%= spot %> 
+        <% end %>
+          </a>
+        </td>
+      <% end %>
+  <% end %>
   </tr>
 </table>
 </div>
