@@ -19,26 +19,43 @@ class WebTicTacToe < Sinatra::Base
     @current_player = @game.current_player
     session[:board] ||=  @game.board
     @board = session[:board]
-    @spots = @board.get_rows
+    @spots = []
+    @spots << @board.get_rows[0] << @board.get_rows[1] << @board.get_rows[2]
     erb :game
   end
 
-  get '/make_move' do
+  post '/make_move' do
     redirect '/' if session[:confirmed] != true || session[:player1] == nil
     game = session[:game]
     current_player = game.current_player
     board = session[:board]
     if current_player.player_type.class == Computer
+      redirect '/computer_move'
       board.place_move(game.get_player_move, current_player.mark)
     else
-      board.place_move(session[:human_move].to_i, current_player.mark)
+      board.place_move(params["chosen-move"].to_i, current_player.mark)
     end
     session[:winner] = current_player if game.scorer.is_won?(board)
     game.cycle_players
     new_current_player = game.current_player
     if new_current_player.player_type.class == Computer
-      redirect '/make_move' unless game.is_over?
+      redirect '/computer_move' unless game.is_over?
     end
+    redirect '/game'
+  end
+
+  get '/computer_move' do
+    redirect '/' if session[:confirmed] != true || session[:player1] == nil
+    game = session[:game]
+    current_player = game.current_player
+    board = session[:board]
+    board.place_move(game.get_player_move, current_player.mark)
+    game.cycle_players
+    new_current_player = game.current_player
+    if new_current_player.player_type.class == Computer
+      redirect '/computer_move' unless game.is_over?
+    end
+    session[:winner] = current_player if game.scorer.is_won?(board)
     redirect '/game'
   end
 
@@ -56,12 +73,6 @@ class WebTicTacToe < Sinatra::Base
     redirect '/'
   end
 
-  get '/make_move/:human_move' do
-    redirect '/' if session[:confirmed] != true || session[:player1] == nil
-    session[:human_move] = params[:human_move]
-    redirect '/make_move'
-  end
-
   post '/game_setup' do
     if params["setup"] == "Humans"
       session[:player1] = Player.new(Human.new)
@@ -73,17 +84,6 @@ class WebTicTacToe < Sinatra::Base
     redirect '/game'
   end
 
-  get '/hvh' do
-    session[:player1] = Player.new(Human.new)
-    session[:player2] = Player.new(Human.new)
-    redirect '/game'
-  end
-
-  get '/hvc' do
-    session[:player1] = Player.new(Human.new)
-    session[:player2] = Player.new(Computer.new("O"))
-    redirect '/game'
-  end
 end
 
 WebTicTacToe.run!

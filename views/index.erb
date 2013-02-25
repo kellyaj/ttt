@@ -2,18 +2,15 @@
 
 <div class="choice-list">
   <h2 class="game-choice-heading"> Choose your game type: </h2>
-<!--   <ul>
-    <li class ="game-choice"> <a href='/hvc'> Human vs. Computer </a> </li>
-    <li class="game-choice"> <a href='/hvh'> Human vs. Human </a> </li>
-  </ul> -->
 
-<form action="/game_setup" method="post" class="game-setup">
-  <input type="hidden" value="Humans" name="setup">
-  <input type="submit" value="Human vs. Human">
-</form>
-<form action="/game_setup" method="post" class="game-setup">
-  <input type="hidden" value="Computer" name="setup">
-  <input type="submit" value="Human vs. Computer">
-</form>
+  <form action="/game_setup" method="post" class="game-setup">
+    <input type="hidden" value="Humans" name="setup">
+    <input type="submit" value="Human vs. Human">
+  </form>
+  
+  <form action="/game_setup" method="post" class="game-setup">
+    <input type="hidden" value="Computer" name="setup">
+    <input type="submit" value="Human vs. Computer">
+  </form>
 </div>
 

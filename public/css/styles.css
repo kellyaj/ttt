@@ -130,6 +130,7 @@ td a {
   /*background: red;*/
 }
 
+
 .td-top {
   border-bottom: 3px solid black;
 }
@@ -161,4 +162,11 @@ td a {
 
 .spot-placeholder {
   display: none;
+}
+
+.form-button {
+  width: 100%;
+  height: 100%;
+  background: red;
+
 }
