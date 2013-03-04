@@ -1,5 +1,4 @@
 require_relative 'scorer.rb'
-require 'pry'
 
 class Computer < Player
 

@@ -2,5 +2,5 @@ source :rubygems
 
 gem 'heroku'
 gem 'sinatra'
-#gem 'thin'
+gem 'thin'
 gem 'pry'

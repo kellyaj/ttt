@@ -1,4 +1,3 @@
-require 'pry'
 class GameLoop
 
   attr_accessor :game

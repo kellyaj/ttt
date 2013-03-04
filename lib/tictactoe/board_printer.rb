@@ -1,4 +1,3 @@
-require 'pry'
 class BoardPrinter
 
   def initialize(output)

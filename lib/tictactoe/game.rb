@@ -1,4 +1,3 @@
-require 'pry'
 class Game
 
   attr_reader :board, :current_player, :scorer

@@ -1,4 +1,3 @@
-require 'pry'
 class Human
 
 	def initialize(output = $stdout, input = $stdin)

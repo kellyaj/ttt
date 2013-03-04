@@ -1,4 +1,3 @@
-require 'pry'
 class Player
 
   attr_accessor :mark, :player_type
