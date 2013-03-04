@@ -22,90 +22,13 @@
 <% end %>
 
 <div class="game-board">
-<!-- <form action="/make_move" method="post">
-  <table border="1">
-    <tr>
-      <% @spots[0].each_with_index do |spot, index| %>
-        <% if spot.class == Fixnum %> 
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-top center">
-            <input type="button" value="<%=spot.to_i%>" class="form-button" name="chosen_move">
-          <% else %>
-            <td height="100" width="100" align="center" class="td-top">
-            <input type="button" value="<%=spot.to_i%>" class="form-button">
-          <% end %> 
-
-        <% else %>
-
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-top center">
-            <%= spot %>
-          <% else %>
-            <td height="100" width="100" align="center" class="td-top activated">
-            <%= spot %> 
-          <% end %>
-            </a>
-          </td>
-        <% end %>
-    <% end %>
-    </tr>
-    <tr>
-      <% @spots[1].each_with_index do |spot, index| %>
-        <% if spot.class == Fixnum %> 
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-mid center mid-row">
-            <a href='/make_move/<%= spot.to_i%>'>
-          <% else %>
-            <td height="100" width="100" align="center" class="td-mid mid-row">
-            <a href='/make_move/<%= spot.to_i%>'> 
-          <% end %>
-
-        <% else %>
-
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-mid center mid-row">
-            <%= spot %>
-          <% else %>
-            <td height="100" width="100" align="center" class="td-mid mid-row">
-            <%= spot %> 
-          <% end %>
-            </a>
-          </td>
-        <% end %>
-    <% end %>
-    </tr>
-    <tr>
-      <% @spots[2].each_with_index do |spot, index| %>
-        <% if spot.class == Fixnum %> 
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-bot center bot-row">
-            <a href='/make_move/<%= spot.to_i%>'>
-          <% else %>
-            <td height="100" width="100" align="center" class="td-bot bot-row">
-            <a href='/make_move/<%= spot.to_i%>'> 
-          <% end %>
-
-        <% else %>
-
-          <% if index == 1 %>
-            <td height="100" width="100" align="center" class="td-bot center bot-row">
-            <%= spot %>
-          <% else %>
-            <td height="100" width="100" align="center" class="td-bot bot-row">
-            <%= spot %> 
-          <% end %>
-            </a>
-          </td>
-        <% end %>
-    <% end %>
-    </tr>
-  </table>
-</form> -->
 
 <form action="/make_move" method="post" class="game-form">
   <table border="1">
     <% @spots.each do |row| %>
-      <tr>
+    <!-- use a switch that assigns class based on index -->
+    <!-- board presenter -->
+      <tr> 
         <% row.each_with_index do |spot, index| %>
           <% if spot.class == Fixnum %>
             <td height="100" width="100"> 
