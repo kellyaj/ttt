@@ -1,1 +1,1 @@
-web: bundle exec thin -R config.ru start -p $PORT
+web: bundle exec ruby webttt.rb -p $PORT
