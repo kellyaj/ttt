@@ -85,4 +85,4 @@ class WebTicTacToe < Sinatra::Base
 
 end
 
-WebTicTacToe.run!
+WebTicTacToe.run!, :port => $PORT
