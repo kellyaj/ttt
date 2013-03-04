@@ -3,7 +3,6 @@ $:.unshift(File.expand_path("../lib/", __FILE__))
 require 'tictactoe.rb'
 
 class WebTicTacToe < Sinatra::Base
-  set :port, PORT
   use Rack::Session::Pool
 
   get '/' do
