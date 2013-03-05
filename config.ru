@@ -1,2 +1,2 @@
 require 'webttt'
-WebTicTacToe.run!
+run Sinatra::Application
