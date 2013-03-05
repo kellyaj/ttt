@@ -3,14 +3,15 @@
 <div class="choice-list">
   <h2 class="game-choice-heading"> Choose your game type: </h2>
 
-  <form action="/game_setup" method="post" class="game-setup">
+  <form action="/game_setup" method="post" class="game-setup hvh">
     <input type="hidden" value="Humans" name="setup">
     <input type="submit" value="Human vs. Human">
   </form>
   
-  <form action="/game_setup" method="post" class="game-setup">
+  <form action="/game_setup" method="post" class="game-setup hvc" >
     <input type="hidden" value="Computer" name="setup">
     <input type="submit" value="Human vs. Computer">
   </form>
+  <p class="cpu-warning"> Note: please be patient on the computer's first move, it is calculating the best way to destroy you. </p>
 </div>
 
