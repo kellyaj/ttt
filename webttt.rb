@@ -3,7 +3,7 @@ $:.unshift(File.expand_path("../lib/", __FILE__))
 require 'tictactoe.rb'
 
 class WebTicTacToe < Sinatra::Base
-
+  set :port, ENV["PORT"].to_i
   use Rack::Session::Pool
 
   get '/' do
@@ -85,4 +85,4 @@ class WebTicTacToe < Sinatra::Base
 
 end
 
-WebTicTacToe.run!
+#WebTicTacToe.run!
